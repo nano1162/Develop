@@ -1,0 +1,38 @@
+html {
+    text-align: center;
+}
+.buttonDiv {
+    margin-top: 20px;
+}
+.buttonDiv button{
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 0px 10px;
+    
+    
+}
+
+.buttonDiv button:hover {
+    
+    cursor: pointer;
+    animation-name: newAni;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes newAni {
+    0% {
+        background-color: white;
+        color: black;
+    }
+    100% {
+        background-color: black;
+        color: white;
+    }
+  }
