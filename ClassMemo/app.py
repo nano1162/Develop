@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request
+import pymysql
+
+
 
 app = Flask(__name__)
 
@@ -38,9 +41,39 @@ def register():
 def science():
     return render_template("science.html")
 
-@app.route('/society')
+@app.route('/society', methods=['GET', 'POST'])
 def society():
-    return render_template("society.html")
+    if request.method == "POST" :
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societyBoard", charset="utf8")
+        cur = db.cursor()
+        title = request.form['title']
+        writer = request.form['writer']
+        context = request.form['context']
+        
+        sql = "INSERT INTO Board (num, title, writer, context) VALUES ('10',  '%s', '%s', '%s')" %(title, writer, context)
+        cur.execute(sql)
+
+        data_list = cur.fetchall()
+
+        cur.close
+    
+    elif request.method == "GET" :
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societyBoard", charset="utf8")
+        cur = db.cursor()
+
+        sql = "SELECT * from Board"
+        cur.execute(sql)
+
+        data_list = cur.fetchall()
+        
+    return render_template("society.html", data_list=data_list)
+    
+
+
+
+@app.route('/write')
+def sociteyWrite():
+    return render_template("societyWrite.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

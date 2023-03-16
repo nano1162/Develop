@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h1>문과 쓰기 페이지</h1>
+    <form action="/society" name="writeForm" method="POST">
+        <input type="text" name="title" placeholder="제목">
+        <input type="text" name="writer" placeholder="작성자">
+        <input type="text" class="writeInput" name="context" placeholder="내용"> 
+        <button type="submit" class="btn">쓰기</button>
+    </form>
+</article>
+{% endblock %}

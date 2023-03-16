@@ -83,7 +83,13 @@ article {
     width: 33.3%;
 }
 
-/* 수행평가 목록*/
+/* 수행평가 목록 table - 2*/
+
+.table {
+    width: 100%;
+    text-align: center;
+}
+/* 수행평가 목록 1*/
 .listArticle {
     display: flex;
 }
@@ -138,6 +144,12 @@ article {
     padding-left: 5%;
 }
 
+/* 글쓰기 */
+
+.writeInput {
+    height: 300px;
+    width: 100%;
+}
 /* 로그인 및 회원가입 */
 .loginScreen {
     text-align: center;

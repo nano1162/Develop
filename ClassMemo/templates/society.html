@@ -3,19 +3,28 @@
 {% block content %}
 <article>
     <h2>인문계(문과) 수행평가 목록</h2>
-    <div class="listArticle">
-        <div class="listLeft">
-            <button class="listButton">이쪽은 왼쪽이다잉</button>
-            <button class="listButton">이쪽은 왼쪽이다잉</button>
-            <button class="listButton">이쪽은 왼쪽이다잉</button>
-            <button class="listButton">이쪽은 왼쪽이다잉</button>
-            <button class="listButton">이쪽은 왼쪽이다잉</button>
-        </div>
-        <div class="listRight">
-            <div class="listRightArticle">
-            <span style="font-size: 100px;">이쪽은 오른쪽이다잉</span>
-            </div>
-        </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>제목</th>
+                    <th>글쓴이</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data_list %}
+                <tr>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody> 
+        </table>
+    </div>
+    <div>
+        <button class="btn writeBtn" onclick="location.href='/write'">글쓰기</button>  
     </div>
 </article>
 {% endblock %}
