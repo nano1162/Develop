@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>205 알림</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>2023 성보고등학교 2학년 5반</h1>
+        <div class="navBar">
+            <div class="allSub navBox">
+                <a href="/">전체 과목</a>
+            </div>
+            <div class="sciencePlayer navBox">
+                <a href="/science">자연계(이과)</a>
+            </div>
+            <div class="societyPlayer navBox">
+                <a href="/society">인문계(문과)</a>
+            </div>
+            <div class="login navBox">
+                <a href="/login">로그인</a>
+            </div>
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+    <footer style="height:100px">
+        <span> 성보고등학교 20501 강동혁 개발</span>
+    </footer>
+</body>
+</html>

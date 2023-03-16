@@ -1,0 +1,33 @@
+header {
+    background-color: antiquewhite;
+    margin: 0;
+}
+
+header h1 {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 5px;
+}
+body {
+    margin:0;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.navBar span {
+    
+}
+
+.mainImg {
+    display: flex;
+}
+
+.subImg {
+    width: 33.3%;
+}
