@@ -1,28 +1,79 @@
+/* 기본 스타일 */
+body {
+    margin:0;
+}
+
+/* 헤더 및 navigation bar*/
 header {
     background-color: antiquewhite;
     margin: 0;
 }
 
 header h1 {
+    padding-top: 30px;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 5px;
-}
-body {
-    margin:0;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
+
+
+.navBar a {
+    text-decoration: none;
+    color: black;
+}
 .navBar {
     display: flex;
     justify-content: space-between;
-    padding-left: 10%;
-    padding-right: 10%;
 }
 
-.navBar span {
+.navBox {
+    width: 25%;
+    height: 50px;
+    text-align: center;
     
 }
+.navBox button {
+    background-color: antiquewhite;
+    color: black;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    font-size : 15px;
+}
+.navBox button:hover {
+    
+    cursor: pointer;
+    animation-name: newAni;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes newAni {
+    0% {
+        background-color: antiquewhite;
+        color: black;
+    }
+    100% {
+        background-color: rgb(118, 105, 89);
+        color: black;
+    }
+  }
+
+/* 화면  기본 스타일*/
+
+article {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/* 메인 화면 */
 
 .mainImg {
     display: flex;
@@ -30,4 +81,78 @@ body {
 
 .subImg {
     width: 33.3%;
+}
+
+/* 수행평가 목록*/
+.listArticle {
+    display: flex;
+}
+
+.listArticle div {
+    height: 300px;
+}
+
+.listLeft {
+    width: 30%;
+}
+
+.listLeft button {
+    height: 20%;
+    width: 100%;
+    border: 0;
+    background-color: rgb(118, 105, 89);
+    color: black;
+}
+
+.listLeft button:hover {
+    
+    cursor: pointer;
+    animation-name: newAni2;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+.listLeft button:active {
+    background-color: antiquewhite;
+    color: black;
+}
+@keyframes newAni2 {
+    0% {
+        background-color: rgb(118, 105, 89);
+        color: black;
+    }
+    100% {
+        background-color: antiquewhite;
+        color: black;
+    }
+  }
+
+.listRight {
+    width: 70%;
+}
+
+.listRightArticle {
+    padding-left: 5%;
+}
+
+/* 로그인 및 회원가입 */
+.loginScreen {
+    text-align: center;
+}
+
+.formInput {
+    height: 35px;
+    width: 50%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.btn {
+    height: 30px;
+    width: 100px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }

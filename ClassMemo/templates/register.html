@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h2>회원가입</h2>
+    <h1>회원가입 기능은 아직 구현중입니다.</h1>
+
+    <div>
+        {{ error }}
+    </div>
+    <form method="POST" action="login">
+        <div>
+            <label for="username" class="formLabel">아이디</label>
+            <input type="text" class="formInput" id="username" name="username" placeholder="아이디">
+        </div>
+        <div>
+            <label for="password" class="formLabel">비밀번호</label>
+            <input type="password" class="formInput" id="password" name="password" placeholder="비밀번호">
+        </div>
+        <div>
+            <label for="re-password" class="formLabel">비밀번호 확인</label>
+            <input type="password" class="formInput" id="re-password" name="re-password" placeholder="비밀번호 확인">
+        </div>
+        <button type="submit" class="btn">가입</button>
+    </form>
+</article>
+{% endblock %}

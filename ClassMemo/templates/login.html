@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-이것은 로그인이야
+<article>
+    <div class="loginScreen">
+        <h2>로그인</h2>
+        <form method="POST" action="login">
+            <div>
+                <label for="username" class="formLabel">아이디<br></label>
+                <input type="text" class="formInput" id="username" name="username" placeholder="아이디">
+            </div>
+            <div>
+                <label for="password" class="formLabel">비밀번호<br></label>
+                <input type="password" class="formInput" id="password" name="password" placeholder="비밀번호">
+            </div>
+            <div>
+                <button type="submit" class="btn">로그인</button>
+            </div>
+
+        <div>
+            자신의 수행평가 기록을 남기고 싶다면? <a href="/register">회원가입</a>
+        </div>
+    </div>
+</article>
 {% endblock %}
