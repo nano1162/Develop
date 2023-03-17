@@ -30,7 +30,7 @@ header h1 {
 }
 
 .navBox {
-    width: 25%;
+    width: 33.3%;
     height: 50px;
     text-align: center;
     
@@ -89,6 +89,7 @@ article {
     width: 100%;
     text-align: center;
 }
+
 /* 수행평가 목록 1*/
 .listArticle {
     display: flex;
@@ -146,10 +147,20 @@ article {
 
 /* 글쓰기 */
 
+.writeTitle {
+    width: 100%;
+    height: 30px;
+}
+
+.writeWriter {
+    height: 25px;
+}
 .writeInput {
     height: 300px;
     width: 100%;
+    margin-bottom: 10px;
 }
+
 /* 로그인 및 회원가입 */
 .loginScreen {
     text-align: center;

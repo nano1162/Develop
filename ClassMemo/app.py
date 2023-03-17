@@ -41,7 +41,7 @@ def register():
 def science():
     return render_template("science.html")
 
-@app.route('/sowritepost', methods=['POST'])
+@app.route('/board/wpost', methods=['POST'])
 def sowritepost():
     if request.method == 'POST':
         db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
@@ -59,9 +59,9 @@ def sowritepost():
         db.close()
 
 
-    return redirect('/society')
+    return redirect('/board')
 
-@app.route('/society')
+@app.route('/board')
 def society():
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor()
@@ -71,13 +71,13 @@ def society():
 
     data_list = cur.fetchall()
         
-    return render_template("society.html", data_list=data_list)
+    return render_template("board.html", data_list=data_list)
     
 @app.route('/test')
 def test():
     return render_template("gul.html")
 
-@app.route('/society/post/<int:post_id>')
+@app.route('/board/post/<int:post_id>')
 def post(post_id):
 
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
@@ -88,9 +88,9 @@ def post(post_id):
 
     data_list = cur.fetchall()
 
-    return render_template("gul.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3])
+    return render_template("post.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3])
 
-@app.route('/society/post/<int:post_id>/delete')
+@app.route('/board/post/<int:post_id>/delete')
 def deletepost(post_id):
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor()
@@ -111,7 +111,7 @@ def deletepost(post_id):
 
 @app.route('/write')
 def sociteyWrite():
-    return render_template("societyWrite.html")
+    return render_template("form.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

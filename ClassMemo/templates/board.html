@@ -2,7 +2,7 @@
 
 {% block content %}
 <article>
-    <h2>인문계(문과) 수행평가 목록</h2>
+    <h2>수행평가 목록</h2>
     <div>
         <table class="table">
             <thead>
@@ -16,14 +16,14 @@
                 {% for i in data_list %}
                 <tr>
                     <td>{{ i[0] }}</td>
-                    <td><a href="/society/post/{{ i[0] }}">{{ i[1] }}</a></td>
+                    <td><a href="/board/post/{{ i[0] }}">{{ i[1] }}</a></td>
                     <td>{{ i[2] }}</td>
                 </tr>
                 {% endfor %}
             </tbody> 
         </table>
     </div>
-    <div>
+    <div style="display:flex; justify-content: flex-end; margin-top:20px">
         <button class="btn writeBtn" onclick="location.href='/write'">글쓰기</button>  
     </div>
 </article>

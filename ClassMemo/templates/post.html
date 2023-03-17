@@ -8,8 +8,7 @@
     </div>
     <div>
         <span>{{ context }}</span>
-        <img src="{{ url_for('static', filename='example.jpg') }}" style="width: 300px;">
     </div>
-    <button onclick="location.href='/society/post/{{ id }}/delete'">삭제</button>
+    <button onclick="location.href='/board/post/{{ id }}/delete'">삭제</button>
 </article>
 {% endblock %}
