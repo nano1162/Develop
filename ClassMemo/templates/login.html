@@ -16,15 +16,12 @@
             <div>
                 <button type="submit" class="btn">로그인</button>
             </div>
-
         <div>
-            자신의 수행평가 기록을 남기고 싶다면? <a href="/register">회원가입</a>
+            <span style="color:red;">{{ message }}</span>
+        </div>
+        <div> 
+            <span>자신의 수행평가 기록을 남기고 싶다면? <a href="/register">회원가입</a></span>
         </div>
     </div>
 </article>
-{% if message != NULL %}
-<script>
-    alert(message)
-</script>
-{% endif %}
 {% endblock %}

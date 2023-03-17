@@ -33,7 +33,7 @@ def login():
         cur.execute(sql)
         a = cur.fetchall()[0][0]
         if a == '0' :
-            return redirect('/login')
+            return render_template("login.html", message="아이디 또는 비밀번호가 잘못되었습니다!")
         else:
             sql = f"SELECT password from userinfo2 where id = '{id}'"
             cur.execute(sql)
@@ -42,7 +42,7 @@ def login():
                 session['id'] = id
                 return redirect('/')
             else :
-                return redirect('/login')
+                return render_template("login.html", message="아이디 또는 비밀번호가 잘못되었습니다!")
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
