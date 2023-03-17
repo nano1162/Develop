@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <div class="authCheck">
+        <h1>회원정보 관리</h1>
+        <h2>{{ session['id'] }}님, 환영합니다</h2>
+        <div>
+            <span>아이디 : {{ session['id'] }}</span>
+        </div>
+        <div>
+            <span>비밀번호 : 알 수 없음</span>
+        </div>
+        <div>
+            {% if session['id'] == 'admin' %}
+            <span>권한 단계 : admin</span>
+            {% else %}
+            <span>권한 단계 : default</span>
+            {% endif %}
+        </div>
+    </div>
+</article>
+{% endblock %}

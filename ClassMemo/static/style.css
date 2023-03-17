@@ -1,47 +1,103 @@
 /* 기본 스타일 */
+
+html {
+    font-family: 'Nanum Gothic';
+}
 body {
     margin:0;
 }
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 800;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot);
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff2) format('woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff2) format('woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff2) format('woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.ttf) format('truetype');
+}
+  
+a {
+    text-decoration: none;
+    color: black;
+} 
+
+a:hover {
+    cursor: pointer;
+    animation-name: newAni;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
 
 /* 헤더 및 navigation bar*/
 header {
-    background-color: antiquewhite;
+    background-color: white;
     margin: 0;
+    display: flex;
+    border-bottom: 1px;
+    border-color: rgb(163, 163, 163);
+    border-bottom-style: solid;
 }
 
 header h1 {
-    padding-top: 30px;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 10px;
     text-align: center;
+    width: 25%;
+    padding-top: 20px;
 }
 
 
 
-.navBar a {
-    text-decoration: none;
-    color: black;
-}
 .navBar {
     display: flex;
     justify-content: space-between;
+    width: 50%;
+    
 }
 
 .navBox {
     width: 33.3%;
-    height: 50px;
+    height: 100%;
     text-align: center;
+    
     
 }
 .navBox button {
-    background-color: antiquewhite;
+    background-color: white;
     color: black;
     width: 100%;
     height: 100%;
     border: 0;
     font-size : 15px;
+    font-weight: 800;
 }
 .navBox button:hover {
     
@@ -57,30 +113,34 @@ header h1 {
 
 @keyframes newAni {
     0% {
-        background-color: antiquewhite;
         color: black;
     }
     100% {
-        background-color: rgb(118, 105, 89);
-        color: black;
+        
+        color: rgb(71, 148, 221);
     }
   }
+
+.loginAuth {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center
+}
 
 /* 화면  기본 스타일*/
 
 article {
-    margin-left: 15%;
-    margin-right: 15%;
+    padding-top: 20px;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 20px;
+    background-color: rgb(250, 252, 250);
 }
 
 /* 메인 화면 */
 
-.mainImg {
+.indexMain {
     display: flex;
-}
-
-.subImg {
-    width: 33.3%;
 }
 
 /* 수행평가 목록 table - 2*/
@@ -88,6 +148,22 @@ article {
 .table {
     width: 100%;
     text-align: center;
+}
+
+.boardBackgr {
+    background-color: aqua;
+    width: 100%;
+    border-radius: 10px; 
+    margin-bottom: 5px;
+}
+
+.boardText {
+    display:flex;
+    flex-direction:column; 
+    margin-left: 10px; 
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    margin-right:10px; 
 }
 
 /* 수행평가 목록 1*/
@@ -178,4 +254,41 @@ article {
     width: 100px;
     margin-bottom: 10px;
     border-radius: 5px;
+    border: 0px;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+    animation-name: newAni3;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes newAni3 {
+    0% {
+        color: black;
+    }
+    100% {
+        background-color: rgb(71, 148, 221);
+        color: white;
+    }
+  }
+
+/* footer */
+
+.footer {
+    height:30px; 
+    padding-top: 20px; 
+    background-color: rgb(170, 171, 187);
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.footer span {
+    color: rgb(61, 56, 81);
 }

@@ -1,9 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article>
-    <h2>메인화면</h2>
-    <h3>이곳은 성보고등학교 2학년 5반 수행평가 알림 웹사이트 입니다.</h3>
-    <p>Flask 및 JavaScript를 활용해 만들었습니다. 제작 기간 : 미정</p>
+<article >
+     <div  class="indexMain">
+        <div style="width:60%">
+            <h2>메인화면</h2>
+            <img src="{{ url_for('static', filename='sungbo_logo.png') }}" style="">
+            <h3>이곳은 성보고등학교 2학년 5반 수행평가 알림 웹사이트 입니다.</h3>
+            <span>Flask 및 JavaScript, mySQL 등을 활용해 만들었습니다.</span>
+        </div>
+        <div style="width:40%">
+            <h2>수행평가</h2>
+            {% for i in data_list %}
+            {% if loop.index <= 5 %}
+            <div class="boardBackgr">
+                <div class="boardText">
+                    <a href="/board/post/{{ i[0] }}" style="order:0; font-size: 30px;">{{ i[1] }}</a>
+                    <div style="order:1">
+                        <span>작성자 : {{ i[2] }}</span>
+                        <span>게시일 : 03/17</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </article>
 {% endblock %}

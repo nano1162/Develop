@@ -1,45 +1,79 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_paginate import Pagination, get_page_args
 import pymysql
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
+app.secret_key = 'thisisthepassword'
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+    cur = db.cursor()
 
-@app.route('/login')
+    sql = "SELECT * from society_table order by _id desc"
+    cur.execute(sql)
+
+    data_list = cur.fetchall()
+        
+    return render_template("index.html", data_list=data_list)
+
+@app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "GET":
         return render_template("login.html")
-    # elif request.method == "POST":
+    elif request.method == "POST":
+        id = request.form['id']
+        password = request.form['password']
         
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+        cur = db.cursor()
+        sql = f"SELECT ifnull(max(id), 0) id from userinfo2 where id='{id}'"
+        cur.execute(sql)
+        a = cur.fetchall()[0][0]
+        if a == '0' :
+            return redirect('/login')
+        else:
+            sql = f"SELECT password from userinfo2 where id = '{id}'"
+            cur.execute(sql)
+        
+            if check_password_hash(cur.fetchall()[0][0], password):
+                session['id'] = id
+                return redirect('/')
+            else :
+                return redirect('/login')
 
-@app.route('/register')
+@app.route('/register', methods=["GET", "POST"])
 def register():
     if request.method == "GET":
         return render_template("register.html")
-    ''' elif request.method == "POST":
+    elif request.method == "POST":
 
-        username = request.POST.get('username', None)
-        password = request.POST.get('password', None)
-        re_password = request.POST.get('re-password', None)
+        username = request.form['id']
+        password = request.form['password']
+        re_password = request.form['re-password']
 
-        res_data = {}
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+        cur = db.cursor()
 
         if not (username and password and re_password):
-            res_data['error'] = '모든 값을 입력하세요.'
+            return "입력되지 않은 정보가 있습니다."
         elif password != re_password :
-            res_data['error'] = '비밀번호가 다릅니다.'
+            return '비밀번호가 다릅니다.'
         else:
-            print('가입 완료! 아이디와 비밀번호는 저장되지 않았습니다 - Test Build')
+            sql = f"insert into userinfo2 (id, password) values ('{username}', '{generate_password_hash(password)}')"
+            cur.execute(sql)
+            db.commit()
 
-        return render_template('login.html') '''
+            cur.close()
+            db.close()
 
-@app.route('/science')
-def science():
-    return render_template("science.html")
+            return redirect('/')
+
+@app.route('/auth')
+def auth():
+    return render_template("auth.html")
 
 @app.route('/board/wpost', methods=['POST'])
 def sowritepost():
@@ -48,7 +82,7 @@ def sowritepost():
         cur = db.cursor()
 
         title = request.form['title']
-        writer = request.form['writer']
+        writer = session['id']
         context = request.form['context']
 
         sql = f"insert into society_table (title, writer, context) values ('{title}', '{writer}', '{context}')"
@@ -61,17 +95,35 @@ def sowritepost():
 
     return redirect('/board')
 
+@app.route('/logout')
+def logout():
+    session.pop('id', None)
+    return redirect('/')
+
 @app.route('/board')
 def society():
+
+    
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+    
+
+    per_page = 10
+    page, _, offset = get_page_args(per_page=per_page)
+
     cur = db.cursor()
 
-    sql = "SELECT * from society_table"
+    sql = "SELECT COUNT(*) FROM society_table;"
+    cur.execute(sql)
+
+    total = cur.fetchall()[0][0]
+
+    sql = f"SELECT * from society_table order by _id desc limit {per_page} offset {offset};"
+
     cur.execute(sql)
 
     data_list = cur.fetchall()
-        
-    return render_template("board.html", data_list=data_list)
+    print(page, total, per_page)
+    return render_template("board.html", data_list=data_list, pagination=Pagination(page=page, total=total, per_page=per_page,format_total=True), search=True)
     
 @app.route('/test')
 def test():
@@ -106,7 +158,7 @@ def deletepost(post_id):
     cur.close()
     db.close()
 
-    return redirect('/society')
+    return redirect('/board')
 
 
 @app.route('/write')

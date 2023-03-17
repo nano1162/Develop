@@ -9,10 +9,8 @@
 </head>
 <body>
     <header>
-        <h1>성보고등학교 2학년 5반</h1>
-        <div class="loginAuth" style="display:flex;justify-content: flex-end;">
-            <span>테스트 님, 안녕하세요</span><a href="">회원정보 관리</a>
-        </div>
+        <h1 style="font-weight: 800; font-size: 25px;"> 성보고등학교 2학년 5반</h1>
+        
         <div class="navBar">
             <div class="allSub navBox">
                 <button onclick="location.href ='/'">메인화면</button>
@@ -21,13 +19,24 @@
                 <button onclick="location.href ='/board'">수행평가 목록</button>
             </div>
             <div class="login navBox">
+                {% if session['id'] != NULL %}
+                <button onclick="location.href ='/logout'">로그아웃</button>
+                
+                {% else %}
                 <button onclick="location.href ='/login'">로그인</button>
+                {% endif %}
             </div>
+        </div>
+        <div class="loginAuth">
+            {% if session['id'] != NULL %}
+            <span>{{ session['id'] }}</span><a href="/auth" style="margin-left:20px; color: rgb(27, 38, 143); font-weight: 700;">회원정보 관리</a>
+            {% endif %}
         </div>
     </header>
     {% block content %}{% endblock %}
-    <footer style="height:30px; margin-top: 20px; text-align: center; background-color: antiquewhite;">
-        <span>개발</span>
+    <footer class="footer">
+        <span style="width:80%">성보고등학교 | 2023 2학년 5반 | 20501 강동혁</span>
+        <span style="width:20%; justify-content: flex-end;"> 개발자 GitHub | 성보고등학교 웹사이트</span>
     </footer>
 </body>
 </html>

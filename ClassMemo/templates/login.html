@@ -7,7 +7,7 @@
         <form method="POST" action="/login">
             <div>
                 <label for="username" class="formLabel">아이디<br></label>
-                <input type="text" class="formInput" id="username" name="username" placeholder="아이디">
+                <input type="text" class="formInput" id="id" name="id" placeholder="아이디">
             </div>
             <div>
                 <label for="password" class="formLabel">비밀번호<br></label>
@@ -22,4 +22,9 @@
         </div>
     </div>
 </article>
+{% if message != NULL %}
+<script>
+    alert(message)
+</script>
+{% endif %}
 {% endblock %}
