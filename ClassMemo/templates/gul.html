@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <div style="margin-bottom:10px;">
+        <h1>{{ title }}</h1>
+        <span >작성자 : {{ writer }}</span>
+    </div>
+    <div>
+        <span>{{ context }}</span>
+        <img src="{{ url_for('static', filename='example.jpg') }}" style="width: 300px;">
+    </div>
+    <button onclick="location.href='/society/post/{{ id }}/delete'">삭제</button>
+</article>
+{% endblock %}

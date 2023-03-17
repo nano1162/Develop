@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import pymysql
 
 
@@ -41,34 +41,72 @@ def register():
 def science():
     return render_template("science.html")
 
-@app.route('/society', methods=['GET', 'POST'])
-def society():
-    if request.method == "POST" :
-        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societyBoard", charset="utf8")
+@app.route('/sowritepost', methods=['POST'])
+def sowritepost():
+    if request.method == 'POST':
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
         cur = db.cursor()
+
         title = request.form['title']
         writer = request.form['writer']
         context = request.form['context']
-        
-        sql = "INSERT INTO Board (num, title, writer, context) VALUES ('10',  '%s', '%s', '%s')" %(title, writer, context)
+
+        sql = f"insert into society_table (title, writer, context) values ('{title}', '{writer}', '{context}')"
         cur.execute(sql)
+        db.commit()
 
-        data_list = cur.fetchall()
+        cur.close()
+        db.close()
 
-        cur.close
-    
-    elif request.method == "GET" :
-        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societyBoard", charset="utf8")
-        cur = db.cursor()
 
-        sql = "SELECT * from Board"
-        cur.execute(sql)
+    return redirect('/society')
 
-        data_list = cur.fetchall()
+@app.route('/society')
+def society():
+    db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+    cur = db.cursor()
+
+    sql = "SELECT * from society_table"
+    cur.execute(sql)
+
+    data_list = cur.fetchall()
         
     return render_template("society.html", data_list=data_list)
     
+@app.route('/test')
+def test():
+    return render_template("gul.html")
 
+@app.route('/society/post/<int:post_id>')
+def post(post_id):
+
+    db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+    cur = db.cursor()
+
+    sql = f"SELECT * from society_table where _id='{post_id}'"
+    cur.execute(sql)
+
+    data_list = cur.fetchall()
+
+    return render_template("gul.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3])
+
+@app.route('/society/post/<int:post_id>/delete')
+def deletepost(post_id):
+    db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+    cur = db.cursor()
+
+    sql = f"DELETE FROM society_table WHERE _id='{post_id}'"
+    cur.execute(sql)
+
+    db.commit()
+
+    sql = f"SELECT * from society_table where _id='{post_id}'"
+    cur.execute(sql)
+
+    cur.close()
+    db.close()
+
+    return redirect('/society')
 
 
 @app.route('/write')
