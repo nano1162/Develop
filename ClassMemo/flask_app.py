@@ -64,12 +64,12 @@ def register():
         elif password != re_password :
             return render_template("register.html", message="비밀번호가 다릅니다.")
         else:
-            sql=f"SELECT ifnull(max(id), 0) id from userinfo2 where id='{username}'"
+            sql=f"SELECT ifnull(max(id), 0) id from userinfo2 where id=trim('{username}')"
             cur.execute(sql)
             a = cur.fetchall()[0][0]
             print(a)
             if a == '0':
-                sql = f"insert into userinfo2 (id, password) values ('{username}', '{generate_password_hash(password)}')"
+                sql = f"insert into userinfo2 (id, password) values (trim('{username}'), '{generate_password_hash(password)}')"
                 cur.execute(sql)
                 db.commit()
 
