@@ -157,9 +157,20 @@ def deletepost(post_id):
     cur.execute(sql)
 
     if (not session):
-        return "비정상적인 접근입니다! 해킹하지 마세요~"
-    elif (cur.fetchall() != session['id']):
-        return "비정상적인 접근입니다! 해킹하지 마세요~"
+        return "비정상적인 접근입니다! 해킹하지 마요~"
+    elif (cur.fetchall()[0][0] != session['id']):
+        if (session['id'] == 'admin'):
+            sql = f"DELETE FROM society_table WHERE _id='{post_id}'"
+            cur.execute(sql)
+
+            db.commit()
+
+            cur.close()
+            db.close()
+
+            return redirect('/board')
+        else:
+            return "비정상적인 접근입니다! 해킹하지 마세요~"
     else:
         sql = f"DELETE FROM society_table WHERE _id='{post_id}'"
         cur.execute(sql)
