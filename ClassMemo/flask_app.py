@@ -148,7 +148,7 @@ def post(post_id):
 
     return render_template("post.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3])
 
-@app.route('/board/post/<int:post_id>/delete')
+@app.route('/board/post/<int:post_id>/delete', methods = ["POST"])
 def deletepost(post_id):
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor()
