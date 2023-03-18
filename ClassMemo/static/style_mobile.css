@@ -2,6 +2,8 @@
 
 html {
     font-family: 'Nanum Gothic';
+    white-space: normal;
+    word-break: break-all;
 }
 body {
     margin:0;
@@ -70,7 +72,7 @@ header h1 {
     margin-left: 0;
     margin-right: 0;
     text-align: center;
-    width: 35%;
+    width: 30%;
     font-weight: 800; font-size: 18px;
     padding-top: 20px;
 }
@@ -80,16 +82,18 @@ header h1 {
 .navBar {
     display: flex;
     justify-content: space-between;
-    width: 60%;
-    
+    width: 40%;
 }
-
+.navMobile {
+    font-size: 20px;
+}
+.navPC {
+    display: none;
+}
 .navBox {
-    width: 33.3%;
+    width: 50%;
     height: 100%;
     text-align: center;
-    
-    
 }
 .navBox button {
     background-color: white;
@@ -97,7 +101,6 @@ header h1 {
     width: 100%;
     height: 100%;
     border: 0;
-    font-size : 12px;
     font-weight: 800;
 }
 .navBox button:hover {
@@ -111,6 +114,24 @@ header h1 {
     animation-fill-mode: forwards;
 }
 
+.navBoxMobile {
+    background-color: white;
+    color: black;
+    width: 100%;
+    height: 70%;
+    border: 0;
+    font-weight: 800;
+}
+.navBoxMobile:hover{
+    
+    cursor: pointer;
+    animation-name: newAni;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
 
 @keyframes newAni {
     0% {
@@ -124,12 +145,23 @@ header h1 {
 
 .loginAuth {
     display:flex;
-    justify-content: flex-end;
     align-items: center;
-    text-align: center;
+    /* text-align: center; */
+    flex-direction: column;
+    padding-left: 2%;
+    width: 28%;
 }
-.loginAuth a {
-    font-size: 12px;
+.pcAuth {
+    display: none;
+}
+
+.mobileAuth {
+    color: rgb(27, 38, 143);
+    font-weight: 700;
+    padding-right: 5%;
+    display: flex;
+    align-items:center;
+    height: 80%;
 }
 
 /* 화면  기본 스타일*/
@@ -150,8 +182,20 @@ article img {
 
 .indexMain {
     display: flex;
+    flex-direction: column;
+}
+.indexLeft {
+    width: 100%
 }
 
+/* 모바일에서는 메인 화면 이미지 숨김.*/
+.indexLeft img{
+    display: none;
+}
+
+.indexRight {
+    width: 100%;
+}
 /* 수행평가 목록 table - 2*/
 
 .table {
@@ -163,7 +207,7 @@ article img {
     background-color: aqua;
     width: 100%;
     border-radius: 10px; 
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .boardText {
@@ -174,62 +218,14 @@ article img {
     padding-bottom: 5px; 
     margin-right:10px; 
 }
-
-/* 수행평가 목록 1*/
-.listArticle {
-    display: flex;
+.boardText a{
+    order:0; 
+    font-size: 25px;
 }
-
-.listArticle div {
-    height: 300px;
+.boardText span{
+    font-size: 15px;
+    order:1;
 }
-
-.listLeft {
-    width: 30%;
-}
-
-.listLeft button {
-    height: 20%;
-    width: 100%;
-    border: 0;
-    background-color: rgb(118, 105, 89);
-    color: black;
-}
-
-.listLeft button:hover {
-    
-    cursor: pointer;
-    animation-name: newAni2;
-    animation-duration:0.2s;
-    animation-duration: leaner;
-    animation-iteration-count:1;
-    animation-direction:alternate;
-    animation-fill-mode: forwards;
-}
-
-.listLeft button:active {
-    background-color: antiquewhite;
-    color: black;
-}
-@keyframes newAni2 {
-    0% {
-        background-color: rgb(118, 105, 89);
-        color: black;
-    }
-    100% {
-        background-color: antiquewhite;
-        color: black;
-    }
-  }
-
-.listRight {
-    width: 70%;
-}
-
-.listRightArticle {
-    padding-left: 5%;
-}
-
 /* 글쓰기 */
 
 .writeTitle {
@@ -253,16 +249,21 @@ article img {
 
 .formInput {
     height: 35px;
-    width: 50%;
+    width: 80%;
     margin-bottom: 10px;
     border-radius: 5px;
+    border:0;
+    background-color: rgb(170, 171, 187);
+    padding-left: 3%;
 }
 
 .btn {
-    height: 30px;
+    height: 50px;
     width: 100px;
     margin-bottom: 10px;
     border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
     border: 0px;
 
 }
