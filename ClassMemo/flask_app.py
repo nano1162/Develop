@@ -181,7 +181,56 @@ def deletepost(post_id):
         db.close()
 
         return redirect('/board')
+    
+@app.route('/board/post/<int:post_id>/update', methods = ["GET", "POST"])
+def updatepost(post_id):
+    if request.method == "GET":
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+        cur = db.cursor()
 
+        sql = f"SELECT * from society_table where _id='{post_id}'"
+        cur.execute(sql)
+
+        data_list = cur.fetchall()
+        return render_template("updateform.html", id=data_list[0][0], title=data_list[0][1], context=data_list[0][3])
+    elif request.method == "POST":
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+        cur = db.cursor()
+
+        sql = f"SELECT writer FROM society_table WHERE _id={post_id}"
+        cur.execute(sql)
+
+        if (not session):
+            return "비정상적인 접근입니다! 해킹하지 마요~"
+        elif (cur.fetchall()[0][0] != session['id']):
+            if (session['id'] == 'admin'):
+                title = request.form['title']
+                context = request.form['context']
+
+                sql = f"UPDATE society_table SET title ='{title}', context = '{context}' WHERE _id={post_id}"
+                cur.execute(sql)
+
+                db.commit()
+
+                cur.close()
+                db.close()
+
+                return redirect(f'/board/post/{post_id}')
+            else:
+                return "비정상적인 접근입니다! 해킹하지 마세요~"
+        else:
+            title = request.form['title']
+            writer = session['id']
+            context = request.form['context']
+
+            sql = f"UPDATE society_table SET title ='{title}', context = '{context}' WHERE _id={post_id}"
+            cur.execute(sql)
+            db.commit()
+
+            cur.close()
+            db.close()
+
+            return redirect(f'/board/post/{post_id}')
 
 @app.route('/write')
 def sociteyWrite():

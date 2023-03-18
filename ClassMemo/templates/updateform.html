@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h1>수정하기</h1>
+    <form action="/board/post/{{ id }}/update" name="writeForm" method="POST">
+        <input type="text" name="title" class="writeTitle" placeholder="제목" onkeyup="check()" value="{{ title }}">
+        <input type="text" class="writeInput" name="context" placeholder="내용" onkeyup="check()" value="{{ context }}"> 
+        <div style="display:flex;justify-content: flex-end;">
+            <button type="submit" disabled class="btn writeBtn">수정하기</button>
+        </div>
+    </form>
+</article>
+<script src="{{ url_for('static', filename='script/form.js') }}"></script>
+{% endblock %}
