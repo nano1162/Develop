@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2023 2학년 5반</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_pc.css') }}" media="screen and (min-width: 768px)">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_mobile.css') }}" media="screen and (max-width: 767px)">
 </head>
 <body>
+    <!-- Server Build 230318.a | 모바일 지원 일부 추가 및 로그인 관련 보안사항 수정, 글쓰기 권한 모두에게 추가 -->
     <header>
-        <h1 style="font-weight: 800; font-size: 25px;"> 성보고등학교 2학년</h1>
-        
+        <h1 >성보고등학교<br>2학년</h1>
         <div class="navBar">
             <div class="allSub navBox">
                 <button onclick="location.href ='/'">메인화면</button>
@@ -29,14 +30,13 @@
         </div>
         <div class="loginAuth">
             {% if session['id'] != NULL %}
-            <span>{{ session['id'] }}</span><a href="/auth" style="margin-left:20px; color: rgb(27, 38, 143); font-weight: 700;">회원정보 관리</a>
+            <span><a href="/auth" style="margin-left:20px; color: rgb(27, 38, 143); font-weight: 700;">{{ session['id'] }} | 마이페이지</a></span>
             {% endif %}
         </div>
     </header>
     {% block content %}{% endblock %}
     <footer class="footer">
-        <span style="width:80%">성보고등학교 | 2023 2학년 5반 | 20501 강동혁</span>
-        <span style="width:20%; justify-content: flex-end;"> 개발자 GitHub | 성보고등학교 웹사이트</span>
+        <span>성보고등학교 | 20501 강동혁 | 개발자 GitHub | 성보고등학교 웹사이트</span>
     </footer>
 </body>
 </html>

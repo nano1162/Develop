@@ -70,7 +70,8 @@ header h1 {
     margin-left: 0;
     margin-right: 0;
     text-align: center;
-    width: 25%;
+    width: 35%;
+    font-weight: 800; font-size: 18px;
     padding-top: 20px;
 }
 
@@ -79,7 +80,7 @@ header h1 {
 .navBar {
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    width: 60%;
     
 }
 
@@ -96,7 +97,7 @@ header h1 {
     width: 100%;
     height: 100%;
     border: 0;
-    font-size : 15px;
+    font-size : 12px;
     font-weight: 800;
 }
 .navBox button:hover {
@@ -124,17 +125,25 @@ header h1 {
 .loginAuth {
     display:flex;
     justify-content: flex-end;
-    align-items: center
+    align-items: center;
+    text-align: center;
+}
+.loginAuth a {
+    font-size: 12px;
 }
 
 /* 화면  기본 스타일*/
 
 article {
     padding-top: 20px;
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-bottom: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 30%;
     background-color: rgb(250, 252, 250);
+}
+
+article img {
+    width: 100%;
 }
 
 /* 메인 화면 */
@@ -281,12 +290,12 @@ article {
 /* footer */
 
 .footer {
-    height:30px; 
     padding-top: 20px; 
     background-color: rgb(170, 171, 187);
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 20px;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 5%;
+    text-align: center;
 }
 
 .footer span {

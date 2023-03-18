@@ -9,6 +9,15 @@
     <div>
         <span>{{ context }}</span>
     </div>
-    <button class="btn"onclick="location.href='/board/post/{{ id }}/delete'">삭제</button>
+    {% if session['id'] == writer or session['id'] == 'admin' %}
+    <div style="display:flex; justify-content: flex-end;">
+        <form method = "POST" action="/board/post/{{ id }}/delete" >
+            <button class="btn">삭제</button>
+        </form>
+        <form method = "POST" action="/board/post/{{ id }}/update" style="margin-left: 20px;">
+            <button class="btn">수정</button>
+        </form>
+    </div>
+    {% endif %}
 </article>
 {% endblock %}

@@ -20,7 +20,7 @@
         <span>데이터가 없습니다.</span>
         {% endif %}
     </div>
-    {% if session['id'] == 'admin' %}
+    {% if session['id'] != NULL %}
     <div style="display:flex; justify-content: flex-end; margin-top:20px">
         <button class="btn writeBtn" onclick="location.href='/write'">글쓰기</button>  
     </div>

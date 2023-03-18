@@ -1,0 +1,295 @@
+/* 기본 스타일 */
+
+html {
+    font-family: 'Nanum Gothic';
+}
+body {
+    margin:0;
+}
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 800;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot);
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff2) format('woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff2) format('woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
+    src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff2) format('woff2'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff) format('woff'),
+         url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.ttf) format('truetype');
+}
+  
+a {
+    text-decoration: none;
+    color: black;
+} 
+
+a:hover {
+    cursor: pointer;
+    animation-name: newAni;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+
+/* 헤더 및 navigation bar*/
+header {
+    background-color: white;
+    margin: 0;
+    display: flex;
+    border-bottom: 1px;
+    border-color: rgb(163, 163, 163);
+    border-bottom-style: solid;
+}
+
+header h1 {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    width: 25%;
+    font-weight: 800; font-size: 25px;
+    padding-top: 20px;
+}
+
+
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    
+}
+
+.navBox {
+    width: 33.3%;
+    height: 100%;
+    text-align: center;
+    
+    
+}
+.navBox button {
+    background-color: white;
+    color: black;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    font-size : 15px;
+    font-weight: 800;
+}
+.navBox button:hover {
+    
+    cursor: pointer;
+    animation-name: newAni;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes newAni {
+    0% {
+        color: black;
+    }
+    100% {
+        
+        color: rgb(71, 148, 221);
+    }
+  }
+
+.loginAuth {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center
+}
+
+/* 화면  기본 스타일*/
+
+article {
+    padding-top: 20px;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 20px;
+    background-color: rgb(250, 252, 250);
+}
+
+/* 메인 화면 */
+
+.indexMain {
+    display: flex;
+}
+
+/* 수행평가 목록 table - 2*/
+
+.table {
+    width: 100%;
+    text-align: center;
+}
+
+.boardBackgr {
+    background-color: aqua;
+    width: 100%;
+    border-radius: 10px; 
+    margin-bottom: 5px;
+}
+
+.boardText {
+    display:flex;
+    flex-direction:column; 
+    margin-left: 10px; 
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    margin-right:10px; 
+}
+
+/* 수행평가 목록 1*/
+.listArticle {
+    display: flex;
+}
+
+.listArticle div {
+    height: 300px;
+}
+
+.listLeft {
+    width: 30%;
+}
+
+.listLeft button {
+    height: 20%;
+    width: 100%;
+    border: 0;
+    background-color: rgb(118, 105, 89);
+    color: black;
+}
+
+.listLeft button:hover {
+    
+    cursor: pointer;
+    animation-name: newAni2;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+.listLeft button:active {
+    background-color: antiquewhite;
+    color: black;
+}
+@keyframes newAni2 {
+    0% {
+        background-color: rgb(118, 105, 89);
+        color: black;
+    }
+    100% {
+        background-color: antiquewhite;
+        color: black;
+    }
+  }
+
+.listRight {
+    width: 70%;
+}
+
+.listRightArticle {
+    padding-left: 5%;
+}
+
+/* 글쓰기 */
+
+.writeTitle {
+    width: 100%;
+    height: 30px;
+}
+
+.writeWriter {
+    height: 25px;
+}
+.writeInput {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* 로그인 및 회원가입 */
+.loginScreen {
+    text-align: center;
+}
+
+.formInput {
+    height: 35px;
+    width: 50%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.btn {
+    height: 30px;
+    width: 100px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 0px;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+    animation-name: newAni3;
+    animation-duration:0.2s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes newAni3 {
+    0% {
+        color: black;
+    }
+    100% {
+        background-color: rgb(71, 148, 221);
+        color: white;
+    }
+  }
+
+/* footer */
+
+.footer {
+    height:30px; 
+    padding-top: 20px; 
+    background-color: rgb(170, 171, 187);
+    padding-right: 10%;
+    padding-left: 10%;
+    text-align: center;
+}
+
+.footer span {
+    color: rgb(61, 56, 81);
+}

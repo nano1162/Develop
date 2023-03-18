@@ -7,6 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'thisisthepassword'
 
+#메인 화면
 @app.route('/')
 def index():
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
@@ -19,6 +20,7 @@ def index():
         
     return render_template("index.html", data_list=data_list)
 
+#로그인 관련 기능
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -58,25 +60,32 @@ def register():
         cur = db.cursor()
 
         if not (username and password and re_password):
-            return "입력되지 않은 정보가 있습니다."
+            return render_template("register.html", message="입력되지 않은 정보가 있습니다.")
         elif password != re_password :
-            return '비밀번호가 다릅니다.'
+            return render_template("register.html", message="비밀번호가 다릅니다.")
         else:
-            sql = f"insert into userinfo2 (id, password) values ('{username}', '{generate_password_hash(password)}')"
+            sql=f"SELECT ifnull(max(id), 0) id from userinfo2 where id='{username}'"
             cur.execute(sql)
-            db.commit()
+            a = cur.fetchall()[0][0]
+            print(a)
+            if a == '0':
+                sql = f"insert into userinfo2 (id, password) values ('{username}', '{generate_password_hash(password)}')"
+                cur.execute(sql)
+                db.commit()
 
-            cur.close()
-            db.close()
+                cur.close()
+                db.close()
 
-            return redirect('/')
+                return redirect('/')
+            else :
+                return render_template("register.html", message="이미 존재하는 아이디입니다.")
 
 @app.route('/auth')
 def auth():
     return render_template("auth.html")
 
 @app.route('/board/wpost', methods=['POST'])
-def sowritepost():
+def wpost():
     if request.method == 'POST':
         db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
         cur = db.cursor()
@@ -97,9 +106,10 @@ def sowritepost():
 
 @app.route('/logout')
 def logout():
-    session.pop('id', None)
+    session.clear()
     return redirect('/')
 
+# 수행평가 게시판
 @app.route('/board')
 def society():
 
@@ -124,10 +134,6 @@ def society():
     data_list = cur.fetchall()
     print(page, total, per_page)
     return render_template("board.html", data_list=data_list, pagination=Pagination(page=page, total=total, per_page=per_page,format_total=True), search=True)
-    
-@app.route('/test')
-def test():
-    return render_template("gul.html")
 
 @app.route('/board/post/<int:post_id>')
 def post(post_id):
@@ -147,18 +153,23 @@ def deletepost(post_id):
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor()
 
-    sql = f"DELETE FROM society_table WHERE _id='{post_id}'"
+    sql = f"SELECT writer FROM society_table WHERE _id={post_id}"
     cur.execute(sql)
 
-    db.commit()
+    if (not session):
+        return "비정상적인 접근입니다! 해킹하지 마세요~"
+    elif (cur.fetchall() != session['id']):
+        return "비정상적인 접근입니다! 해킹하지 마세요~"
+    else:
+        sql = f"DELETE FROM society_table WHERE _id='{post_id}'"
+        cur.execute(sql)
 
-    sql = f"SELECT * from society_table where _id='{post_id}'"
-    cur.execute(sql)
+        db.commit()
 
-    cur.close()
-    db.close()
+        cur.close()
+        db.close()
 
-    return redirect('/board')
+        return redirect('/board')
 
 
 @app.route('/write')
