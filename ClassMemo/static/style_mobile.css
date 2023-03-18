@@ -135,11 +135,11 @@ header h1 {
 
 @keyframes newAni {
     0% {
-        color: black;
+        background-color: white;
     }
     100% {
         
-        color: rgb(71, 148, 221);
+        background-color: rgb(205, 218, 255);
     }
   }
 
@@ -171,7 +171,7 @@ article {
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 30%;
-    background-color: rgb(250, 252, 250);
+    background-color: rgb(236, 237, 246);
 }
 
 article img {
@@ -204,9 +204,9 @@ article img {
 }
 
 .boardBackgr {
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
     width: 100%;
-    border-radius: 10px; 
+    border-radius: 20px; 
     margin-bottom: 10px;
 }
 
@@ -218,13 +218,31 @@ article img {
     padding-bottom: 5px; 
     margin-right:10px; 
 }
-.boardText a{
+.boardText1 {
     order:0; 
     font-size: 25px;
 }
-.boardText span{
-    font-size: 15px;
-    order:1;
+
+.boardBackgr:hover {
+    cursor: pointer;
+    animation-name: boardAni;
+    animation-duration:0.1s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+@keyframes boardAni {
+    0% {
+        background-color: white;
+    }
+    100% {
+        
+        background-color: rgb(231, 238, 255);
+    }
+  }
+.boardText div{
+    order:1
 }
 /* 글쓰기 */
 
@@ -240,6 +258,17 @@ article img {
     height: 300px;
     width: 100%;
     margin-bottom: 10px;
+}
+
+/* post 화면 */
+.postWrap {
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px 10px 30px 10px;
+    margin-bottom: 2%;
+}
+.postWrap h1{
+    margin:0;
 }
 
 /* 로그인 및 회원가입 */
@@ -261,17 +290,19 @@ article img {
     height: 50px;
     width: 100px;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 15px;
     font-weight: 700;
     border: 0px;
+    background-color: white;
+    border-style: solid;
 
 }
 
 .btn:hover {
     cursor: pointer;
     animation-name: newAni3;
-    animation-duration:0.2s;
+    animation-duration:0.15s;
     animation-duration: leaner;
     animation-iteration-count:1;
     animation-direction:alternate;
@@ -283,7 +314,7 @@ article img {
         color: black;
     }
     100% {
-        background-color: rgb(71, 148, 221);
+        background-color: rgb(106, 167, 224);
         color: white;
     }
   }
@@ -300,5 +331,5 @@ article img {
 }
 
 .footer span {
-    color: rgb(61, 56, 81);
+    color: rgb(25, 25, 27);
 }

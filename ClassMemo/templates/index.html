@@ -11,19 +11,21 @@
         </div>
         <div class="indexRight">
             <h2>수행평가</h2>
-            {% for i in data_list %}
-            {% if loop.index <= 5 %}
-            <div class="boardBackgr">
-                <div class="boardText">
-                    <a href="/board/post/{{ i[0] }}">{{ i[1] }}</a>
-                    <div >
-                        <span>작성자 : {{ i[2] }}</span>
-                        <span>게시일 : 03/17</span>
+            <div class="boardWrap">
+                {% for i in data_list %}
+                {% if loop.index <= 5 %}
+                <div class="boardBackgr">
+                    <div class="boardText" onclick="location.href='/board/post/{{ i[0] }}'">
+                        <span class="boardText1">{{ i[1] }}</span>
+                        <div>
+                            <span>작성자 : {{ i[2] }}</span>
+                            <span>게시일 : 추가 예정</span>
+                        </div>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}
             </div>
-            {% endif %}
-            {% endfor %}
         </div>
     </div>
 </article>

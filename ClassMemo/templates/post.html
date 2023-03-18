@@ -2,12 +2,14 @@
 
 {% block content %}
 <article>
-    <div style="margin-bottom:10px;">
-        <h1>{{ title }}</h1>
-        <span >작성자 : {{ writer }}</span>
-    </div>
-    <div>
-        <span>{{ context }}</span>
+    <h2>{{title}}</h2>
+    <div class="postWrap">
+        <div style="margin-bottom:10px;">
+            <span >작성자 : {{ writer }}</span>
+        </div>
+        <div>
+            <span>{{ context }}</span>
+        </div>
     </div>
     {% if session['id'] == writer or session['id'] == 'admin' %}
     <div style="display:flex; justify-content: flex-end;">

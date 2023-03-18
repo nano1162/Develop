@@ -7,11 +7,11 @@
         {% if data_list %}
         {% for i in data_list %}
         <div class="boardBackgr">
-            <div class="boardText">
-                <a href="/board/post/{{ i[0] }}" >{{ i[1] }}</a>
+            <div class="boardText" onclick="location.href='/board/post/{{ i[0] }}'">
+                <span class="boardText1">{{ i[1] }}</span>
                 <div>
                     <span>작성자 : {{ i[2] }}</span>
-                    <span>게시일 : 03/17</span>
+                    <span>게시일 : 추가 예정</span>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
     </div>
     {% if session['id'] != NULL %}
     <div style="display:flex; justify-content: flex-end; margin-top:20px">
-        <button class="btn writeBtn" onclick="location.href='/write'">글쓰기</button>  
+        <button class="btn writeBtn" onclick="location.href='/write'">글 쓰기</button>  
     </div>
     {% endif %}
     <div style="text-align: center;">
