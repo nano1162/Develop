@@ -8,19 +8,19 @@
         {% for i in data_list %}
         <div class="boardBackgr">
             <div class="boardText" onclick="location.href='/board/post/{{ i[0] }}'">
-                <span class="boardText1">{{ i[1] }}</span>
+                <span class="boardText1">{{ i[1] }} | {% if i[5] != '0' %}
+                    {% if i[5] > '0' %}
+                    <span class="finishDate">기한 만료 </span>D+{{ i[5] }}
+                    {% else %}
+                    <span class="endDate">D{{ i[5] }}</span>
+                    {% endif %}
+                    {% else %}
+                    <span class="finishDate">마감일!</span>
+                    {% endif %}</span></span>
                 <div>
                     <span>작성자 : {{ i[2] }}</span>
                     <span>게시 : {{ i[4] }}</span>
-                    {% if i[5] != '0' %}
-                        {% if i[5] > '0' %}
-                        <span class="finishDate">기한 만료 </span>D+{{ i[5] }}
-                        {% else %}
-                        <span class="endDate">D{{ i[5] }}</span>
-                        {% endif %}
-                        {% else %}
-                        <span class="finishDate">마감일!</span>
-                        {% endif %}</span>
+                    
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <span>데이터가 없습니다.</span>
         {% endif %}
     </div>
-    {% if session['id'] != NULL %}
+    {% if session['id'] == 'admin' %}
     <div style="display:flex; justify-content: flex-end; margin-top:20px">
         <button class="btn writeBtn" onclick="location.href='/write'">글 쓰기</button>  
     </div>

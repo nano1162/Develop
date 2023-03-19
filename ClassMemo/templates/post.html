@@ -2,16 +2,19 @@
 
 {% block content %}
 <article>
-    <h2>{{title}}</h2>
+    <h2>{{title}} | {% if date_d != '0' %}
+        {% if date_d > '0'%}
+        <span class="finishDate">기한 만료 </span>D+{{date_d}}
+        {% else %}
+        <span class="endDate">D{{ date_d }}</span>
+        {% endif %}
+        {% else %}
+        <span class="finishDate">마감일!</span>
+        {% endif %} </h2>
     <div class="postWrap">
         <div style="margin-bottom:10px;">
             <span >작성자 : {{ writer }}</span>
             <span>게시 : {{ date }}</span>
-            {% if date_d == '0' %}
-            <span class="finishDate">마감일!</span>
-            {% else %}
-            <span class="endDate">D{{ date_d }}</span>
-            {% endif %}
         </div>
         <div>
             <span>{{ context }}</span>

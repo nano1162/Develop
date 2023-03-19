@@ -5,13 +5,13 @@
     <h2>글쓰기</h2>
     <form action="/board/wpost" name="writeForm" method="POST">
         <div class="writeFlex">
-            <input type="text" name="title" class="writeTitle" placeholder="제목" onkeyup="check()">
+            <input type="text" name="title" class="writeTitle" placeholder="제목" required>
             <label for="date" class="writeLabel">제출<br>기한</label>
-            <input type="date" name="date" class="writeDate">
+            <input type="date" name="date" class="writeDate" required>
         </div>
-        <textarea name="context" class="writeInput" cols="30" rows="10"  placeholder="내용" onkeyup="check()"></textarea>
+        <textarea name="context" class="writeInput" cols="30" rows="10"  placeholder="내용" required></textarea>
         <div style="display:flex;justify-content: flex-end;">
-            <button type="submit" disabled class="btn writeBtn">쓰기</button>
+            <button type="submit" class="btn writeBtn">쓰기</button>
         </div>
     </form>
 </article>

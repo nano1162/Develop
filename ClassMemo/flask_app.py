@@ -65,12 +65,12 @@ def register():
         elif password != re_password :
             return render_template("register.html", message="비밀번호가 다릅니다.")
         else:
-            sql=f"SELECT ifnull(max(id), 0) id from userinfo2 where id=trim('{username}')"
+            sql=f"SELECT ifnull(max(id), 0) id from userinfo2 where id=replace('{username}', ' ', '')"
             cur.execute(sql)
             a = cur.fetchall()[0][0]
             print(a)
             if a == '0':
-                sql = f"insert into userinfo2 (id, password) values (trim('{username}'), '{generate_password_hash(password)}')"
+                sql = f"insert into userinfo2 (id, password) values (replace('{username}', ' ', ''), '{generate_password_hash(password)}')"
                 cur.execute(sql)
                 db.commit()
 
@@ -195,22 +195,24 @@ def updatepost(post_id):
         cur.execute(sql)
 
         data_list = cur.fetchall()
-        return render_template("updateform.html", id=data_list[0][0], title=data_list[0][1], context=data_list[0][3])
+        return render_template("updateform.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3], date=data_list[0][4] + dt.timedelta(days=-int(data_list[0][5])), date_d = data_list[0][5])
     elif request.method == "POST":
         db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
         cur = db.cursor()
 
-        sql = f"SELECT writer FROM society_table WHERE _id={post_id}"
+        sql = f"SELECT * FROM society_table WHERE _id={post_id}"
         cur.execute(sql)
-
+        datawrap = cur.fetchall()[0]
         if (not session):
             return "비정상적인 접근입니다! 해킹하지 마요~"
-        elif (cur.fetchall()[0][0] != session['id']):
+        elif (datawrap[2] != session['id']):
             if (session['id'] == 'admin'):
                 title = request.form['title']
                 context = request.form['context']
+                date = datawrap[4]
+                date_d = request.form['date']
 
-                sql = f"UPDATE society_table SET title ='{title}', context = '{context}' WHERE _id={post_id}"
+                sql = f"UPDATE society_table SET title ='{title}', context = '{context}', date_d=datediff('{date}', '{date_d}') WHERE _id={post_id}"
                 cur.execute(sql)
 
                 db.commit()
@@ -223,11 +225,13 @@ def updatepost(post_id):
                 return "비정상적인 접근입니다! 해킹하지 마세요~"
         else:
             title = request.form['title']
-            writer = session['id']
             context = request.form['context']
+            date = datawrap[4]
+            date_d = request.form['date']
 
-            sql = f"UPDATE society_table SET title ='{title}', context = '{context}' WHERE _id={post_id}"
+            sql = f"UPDATE society_table SET title ='{title}', context = '{context}', date_d=datediff('{date}', '{date_d}') WHERE _id={post_id}"
             cur.execute(sql)
+
             db.commit()
 
             cur.close()

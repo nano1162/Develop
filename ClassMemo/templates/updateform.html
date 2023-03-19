@@ -4,10 +4,14 @@
 <article>
     <h2>수정하기</h2>
     <form action="/board/post/{{ id }}/update" name="writeForm" method="POST">
-        <input type="text" name="title" class="writeTitle" placeholder="제목" onkeyup="check()" value="{{ title }}">
-        <input type="text" class="writeInput" name="context" placeholder="내용" onkeyup="check()" value="{{ context }}"> 
+        <div class="writeFlex">
+            <input type="text" name="title" class="writeTitle" placeholder="제목" required value="{{ title }}">
+            <label for="date" class="writeLabel">제출<br>기한</label>
+            <input type="date" name="date" class="writeDate" value="{{date}}" required>
+        </div>
+        <textarea name="context" class="writeInput" cols="30" rows="10" required placeholder="내용">{{ context }}</textarea>
         <div style="display:flex;justify-content: flex-end;">
-            <button type="submit" disabled class="btn writeBtn">수정하기</button>
+            <button type="submit" class="btn writeBtn">수정하기</button>
         </div>
     </form>
 </article>

@@ -7,20 +7,20 @@
         <h2>회원가입</h2>
         <div>
             <label for="id" class="formLabel">아이디<br></label>
-            <input type="text" class="formInput" id="id" name="id" placeholder="아이디" onkeydown="check()">
+            <input type="text" class="formInput" id="id" name="id" placeholder="아이디 (공백을 넣을 시에는 공백을 제거한 상태로 서버에 저장됩니다.)" required>
         </div>
         <div>
             <label for="password" class="formLabel">비밀번호<br></label>
-            <input type="password" class="formInput" id="password" name="password" placeholder="비밀번호" onkeydown="check()" onkeyup="check()">
+            <input type="password" class="formInput" id="password" name="password" placeholder="비밀번호" required>
         </div>
         <div>
             <label for="re-password" class="formLabel">비밀번호 확인<br></label>
-            <input type="password" class="formInput" id="re-password" name="re-password" placeholder="비밀번호 확인" onkeydown="check()" onkeyup="check()">
+            <input type="password" class="formInput" id="re-password" name="re-password" placeholder="비밀번호 확인" required>
         </div>
         <div>
             <span style="color:red;">{{ message }}</span>
         </div>
-        <button type="submit" disabled class="btn">가입</button>
+        <button type="submit" class="btn">가입</button>
     </form>
 </article>
 <script src="{{ url_for('static', filename='script/register.js') }}"></script>
