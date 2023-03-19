@@ -269,7 +269,7 @@ article h2{
     float: right;
 }
 
-#selectSub {
+.selectStyle {
     margin-bottom: 10px;
     height: 50px;
     border: 0;

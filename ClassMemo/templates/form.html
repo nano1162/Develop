@@ -9,21 +9,20 @@
                 <input type="text" name="title" class="writeTitle" placeholder="제목" required>
                 <textarea name="context" class="writeInput" cols="30" rows="10"  placeholder="내용" required></textarea>
             </div>
-            <div style="display:flex; flex-direction: column; width: 30%;    margin-left: 20px;">
-                <select name="tamOrJin" id="selectSub">
-                    <option value="" required>과목 선택</option>
-                    <option value="" required>탐구</option>
-                    <option value="" required>진로</option>
+            <div style="display:flex; flex-direction: column; width: 30%;  margin-left: 20px;" id="didiv">
+                <select name="tamOrJin" id="selectTam" class="selectStyle" required onchange="ChangeValue()"> 
+                    <option value="">분류 선택</option>
+                    <option value="공통">공통</option>
+                    <option value="탐구">탐구</option>
+                    <option value="진로">진로</option>
                 </select>
-                <select name="subject" id="selectSub">
-                    <option value="" required>물리학1</option>
-                    <option value="" required>화학1</option>
-                    <option value="" required>생명과학1</option>
-                    <option value="" required>지구과학1</option>
+                <select name="subject" id="selectSub" class="selectStyle" required>
+                    <option value="">과목 선택</option>
                 </select>
                 <input type="date" name="date_a" class="writeDate" required>
-                <input type="date" name="date_b" class="writeDate" required>
-                <input type="date" name="date_c" class="writeDate dateC" required>
+                <input type="date" name="date_b" class="writeDate dateB">
+                <input type="date" name="date_c" class="writeDate dateC">
+                <input type="text" id="date_c_yes" name="date_c_yes" value="yes" style="display: none;">
              </div>
         </div>
         <div style="display:flex;justify-content: flex-end;">

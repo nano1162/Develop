@@ -14,7 +14,7 @@ def index():
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor()
 
-    sql = "SELECT * from society_table order by _id desc"
+    sql = "SELECT * from society_table where selecter = '공통' order by _id desc "
     cur.execute(sql)
 
     data_list = cur.fetchall()
@@ -85,28 +85,6 @@ def register():
 def auth():
     return render_template("auth.html")
 
-@app.route('/board/wpost', methods=['POST'])
-def wpost():
-    if request.method == 'POST':
-        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
-        cur = db.cursor()
-
-        title = request.form['title']
-        writer = session['id']
-        context = request.form['context']
-        date = dt.datetime.now().strftime("%Y-%m-%d")
-        date_d = request.form['date']
-
-        sql = f"insert into society_table (title, writer, context, date, date_d) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_d}'))"
-        cur.execute(sql)
-        db.commit()
-
-        cur.close()
-        db.close()
-
-
-    return redirect('/board')
-
 @app.route('/logout')
 def logout():
     session.clear()
@@ -115,28 +93,89 @@ def logout():
 # 수행평가 게시판
 @app.route('/board')
 def society():
-
-    
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
-    
-
-    per_page = 10
-    page, _, offset = get_page_args(per_page=per_page)
-
     cur = db.cursor()
 
-    sql = "SELECT COUNT(*) FROM society_table;"
-    cur.execute(sql)
-
-    total = cur.fetchall()[0][0]
-
-    sql = f"SELECT * from society_table order by _id desc limit {per_page} offset {offset};"
+    try:
+        tam_a = request.args['tam_a']
+        tam_b = request.args['tam_b']
+        tam_c = request.args['tam_c']
+        jin_a = request.args['jin_a']
+        jin_b = request.args['jin_b']
+        lang = request.args['lang']
+        sql = f"SELECT * from society_table where (subject='{tam_a}' and selecter ='A')  or (subject = '{tam_b}' and selecter ='B') or  (subject='{tam_c}' and selecter ='C') or (subject = '{jin_a}' and selecter = 'A') or (subject='{jin_b}' and selecter ='B') or subject = '{lang}' or (selecter = '공통' and not subject ='일본어' and not subject = '중국어')order by _id desc" 
+    except:
+        sql = f"SELECT * from society_table order by _id desc"
 
     cur.execute(sql)
 
     data_list = cur.fetchall()
-    print(page, total, per_page)
-    return render_template("board.html", data_list=data_list, pagination=Pagination(page=page, total=total, per_page=per_page,format_total=True), search=True)
+    return render_template("board.html", data_list=data_list)
+
+@app.route('/board/wpost', methods=['POST'])
+def wpost():
+    if session:
+        if (session['id'] == 'admin'):
+            db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+            cur = db.cursor()
+
+            title = request.form['title']
+            writer = session['id']
+            context = request.form['context']
+            
+            # 공통인지, 진로인지, 탐구인지를 넘겨주는 날짜의 개수를 표시하는 value로 판단함
+            date_c_yes = request.form['date_c_yes']
+            if date_c_yes == 'yes':
+                date_A = request.form['date_a']
+                date_B = request.form['date_b']
+                date_C = request.form['date_c'] 
+            elif date_c_yes == 'one':
+                date_A = request.form['date_a']
+            elif date_c_yes == 'no':
+                date_A = request.form['date_a']
+                date_B = request.form['date_b']
+            subject = request.form['subject']
+            date = dt.datetime.now().strftime("%Y-%m-%d")
+            if date_c_yes == "no":
+                sql = f"insert into society_table (title, writer, context, date, date_d, subject, selecter) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_A}'), '{subject}', 'A')"
+                cur.execute(sql)
+                db.commit()
+
+                sql = f"insert into society_table (title, writer, context, date, date_d, subject, selecter) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_B}'), '{subject}', 'B')"
+                cur.execute(sql)
+                db.commit()
+
+                cur.close()
+                db.close()
+            elif date_c_yes == "one":
+                sql = f"insert into society_table (title, writer, context, date, date_d, subject, selecter) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_A}'), '{subject}', '공통')"
+                cur.execute(sql)
+                db.commit()
+
+                cur.close()
+                db.close()
+            else:
+
+                sql = f"insert into society_table (title, writer, context, date, date_d, subject, selecter) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_A}'), '{subject}', 'A')"
+                cur.execute(sql)
+                db.commit()
+
+                sql = f"insert into society_table (title, writer, context, date, date_d, subject, selecter) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_B}'), '{subject}', 'B')"
+                cur.execute(sql)
+                db.commit()
+
+                sql = f"insert into society_table (title, writer, context, date, date_d, subject, selecter) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_C}'), '{subject}', 'C')"
+                cur.execute(sql)
+                db.commit()
+
+                cur.close()
+                db.close()
+            return redirect('/board')
+        else:
+            return '잘못된 접근입니다! 관리자가 아닐 시에는 글을 쓸 수 없습니다.'
+    else:
+        return '잘못된 접근입니다! 관리자가 아니며, 비로그인시에는 글을 쓸 수 없습니다.'
+    
 
 @app.route('/board/post/<int:post_id>')
 def post(post_id):
@@ -149,7 +188,7 @@ def post(post_id):
 
     data_list = cur.fetchall()
 
-    return render_template("post.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3], date=data_list[0][4], date_d = data_list[0][5])
+    return render_template("post.html", data_list=data_list)
 
 @app.route('/board/post/<int:post_id>/delete', methods = ["POST"])
 def deletepost(post_id):

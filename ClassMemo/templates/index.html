@@ -10,13 +10,13 @@
             <span>Flask 및 JavaScript, mySQL 등을 활용해 만들었습니다.</span>
         </div>
         <div class="indexRight">
-            <h2>수행평가</h2>
+            <h2>수행평가 | 공통</h2>
             <div class="boardWrap">
                 {% for i in data_list %}
                 {% if loop.index <= 5 %}
                 <div class="boardBackgr">
                     <div class="boardText" onclick="location.href='/board/post/{{ i[0] }}'">
-                        <span class="boardText1">{{ i[1] }} | {% if i[5] != '0' %}
+                        <span class="boardText1">{{ i[6] }} <span style="font-weight: 700; color: rgb(78, 57, 196);">{{ i[7] }}</span> | {{ i[1] }} | {% if i[5] != '0' %}
                             {% if i[5] > '0' %}
                             <span class="finishDate">기한 만료 </span>D+{{ i[5] }}
                             {% else %}

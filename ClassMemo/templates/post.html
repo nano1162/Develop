@@ -2,30 +2,30 @@
 
 {% block content %}
 <article>
-    <h2>{{title}} | {% if date_d != '0' %}
-        {% if date_d > '0'%}
-        <span class="finishDate">기한 만료 </span>D+{{date_d}}
+    <h2>{{ data_list[0][6] }} <span style="font-weight: 700; color: rgb(78, 57, 196);">{{ data_list[0][7] }} </span>| {{data_list[0][1]}} | {% if data_list[0][5] != '0' %}
+        {% if data_list[0][5] > '0'%}
+        <span class="finishDate">기한 만료 </span>D+{{data_list[0][5]}}
         {% else %}
-        <span class="endDate">D{{ date_d }}</span>
+        <span class="endDate">D{{ data_list[0][5] }}</span>
         {% endif %}
         {% else %}
         <span class="finishDate">마감일!</span>
         {% endif %} </h2>
     <div class="postWrap">
         <div style="margin-bottom:10px;">
-            <span >작성자 : {{ writer }}</span>
-            <span>게시 : {{ date }}</span>
+            <span >작성자 : {{ data_list[0][2] }}</span>
+            <span>게시 : {{ data_list[0][4] }}</span>
         </div>
         <div>
-            <span>{{ context }}</span>
+            <span>{{ data_list[0][3] }}</span>
         </div>
     </div>
-    {% if session['id'] == writer or session['id'] == 'admin' %}
+    {% if session['id'] == data_list[0][2] or session['id'] == 'admin' %}
     <div style="display:flex; justify-content: flex-end;">
-        <form method = "POST" action="/board/post/{{ id }}/delete" >
+        <form method = "POST" action="/board/post/{{ data_list[0][0] }}/delete" >
             <button class="btn">삭제</button>
         </form>
-        <form method = "GET" action="/board/post/{{ id }}/update" style="margin-left: 20px;">
+        <form method = "GET" action="/board/post/{{ data_list[0][0] }}/update" style="margin-left: 20px;">
             <button class="btn">수정</button>
         </form>
     </div>
