@@ -258,7 +258,7 @@ article h2{
 }
 /* 글쓰기 */
 
-.writeFlex {
+.writeWrap {
     display: flex;
     margin-bottom: 10px;
 }
@@ -266,11 +266,21 @@ article h2{
     margin: auto 0;
     font-weight: 700;
     padding-left: 2%;
-    width: 4%;
     float: right;
 }
+
+#selectSub {
+    margin-bottom: 10px;
+    height: 50px;
+    border: 0;
+    border-radius: 30px;
+    text-shadow: 0 0 0 #000000;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Nanum Gothic";
+}
 .writeDate {
-    width: 24%;
+    margin-bottom: 10px;
     height: 50px;
     border: 0;
     border-radius: 30px;
@@ -290,7 +300,8 @@ article h2{
     animation-fill-mode: forwards;
 }
 .writeTitle {
-    width: 70%;
+    width: 100%;
+    margin-bottom: 10px;
     height: 50px;
     border: 0;
     border-radius: 30px;

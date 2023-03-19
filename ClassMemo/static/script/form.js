@@ -1,6 +1,6 @@
 let title = document.querySelector(".writeTitle");
 let context = document.querySelector(".writeInput");
-let button = document.querySelector(".writeBtn")
+let dateC = document.querySelector(".dateC")
 
 function check() {
     if (title.value && context.value ){
