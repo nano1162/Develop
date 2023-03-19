@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_paginate import Pagination, get_page_args
 import pymysql
 from werkzeug.security import generate_password_hash, check_password_hash
+import datetime as dt
 
 
 app = Flask(__name__)
@@ -93,8 +94,10 @@ def wpost():
         title = request.form['title']
         writer = session['id']
         context = request.form['context']
+        date = dt.datetime.now().strftime("%Y-%m-%d")
+        date_d = request.form['date']
 
-        sql = f"insert into society_table (title, writer, context) values ('{title}', '{writer}', '{context}')"
+        sql = f"insert into society_table (title, writer, context, date, date_d) values ('{title}', '{writer}', '{context}', '{date}', datediff('{date}', '{date_d}'))"
         cur.execute(sql)
         db.commit()
 
@@ -146,7 +149,7 @@ def post(post_id):
 
     data_list = cur.fetchall()
 
-    return render_template("post.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3])
+    return render_template("post.html", id=data_list[0][0], title=data_list[0][1], writer=data_list[0][2], context=data_list[0][3], date=data_list[0][4], date_d = data_list[0][5])
 
 @app.route('/board/post/<int:post_id>/delete', methods = ["POST"])
 def deletepost(post_id):

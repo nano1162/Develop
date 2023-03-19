@@ -16,10 +16,17 @@
                 {% if loop.index <= 5 %}
                 <div class="boardBackgr">
                     <div class="boardText" onclick="location.href='/board/post/{{ i[0] }}'">
-                        <span class="boardText1">{{ i[1] }}</span>
+                        <span class="boardText1">{{ i[1] }} | {% if i[5] != '0' %}
+                            {% if i[5] > '0' %}
+                            <span class="finishDate">기한 만료 </span>D+{{ i[5] }}
+                            {% else %}
+                            <span class="endDate">D{{ i[5] }}</span>
+                            {% endif %}
+                            {% else %}
+                            <span class="finishDate">마감일!</span>
+                            {% endif %}</span>
                         <div>
-                            <span>작성자 : {{ i[2] }}</span>
-                            <span>게시일 : 추가 예정</span>
+                            <span>게시일 : {{ i[4] }}</span>
                         </div>
                     </div>
                 </div>

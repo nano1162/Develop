@@ -132,35 +132,8 @@ header h1 {
         
         background-color: rgb(237, 242, 255);
     }
-    0% {
-        background-color: white;
-    }
   }
 
-.navBox button:active {
-
-cursor: pointer;
-animation-name: newAni5;
-animation-duration:0.1s;
-animation-duration: leaner;
-animation-iteration-count:1;
-animation-direction:alternate;
-animation-fill-mode: forwards;
-}
-
-
-@keyframes newAni5 {
-0% {
-    background-color: rgb(237, 242, 255);
-}
-100% {
-    
-    background-color: rgb(205, 218, 255);
-}
-0% {
-    background-color: rgb(237, 242, 255);
-}
-}
 
 .loginAuth {
     display:flex;
@@ -214,6 +187,15 @@ article h2{
 .boardWrap {
     background-color: rgba(255, 255, 255, 0);
 }
+/* 마감일! */
+.endDate {
+    color: green;
+    font-weight: 700;
+}
+.finishDate {
+    color: Red;
+    font-weight: 700;
+}
 /* 수행평가 목록 table - 2*/
 
 .table {
@@ -260,54 +242,111 @@ article h2{
     100% {
         background-color: rgba(255, 255, 255, 0.648);
     }
-    0% {
-        background-color: rgb(255, 255, 255);
-    
-  }
 }
-
-.boardBackgr:active {
-
-cursor: pointer;
-animation-name: boardAni2;
-animation-duration:0.1s;
-animation-duration: leaner;
-animation-iteration-count:1;
-animation-direction:alternate;
-animation-fill-mode: forwards;
-}
-
 
 @keyframes boardAni2 {
-0% {
-    background-color: rgb(231, 238, 255);
-}
-100% {
-    
-    background-color: rgba(188, 199, 227, 0.533);
-}
-0% {
-    background-color: rgb(188, 199, 227);
-}
+    0% {
+        background-color: rgb(231, 238, 255);
+    }
+    100% {
+        
+        background-color: rgba(188, 199, 227, 0.533);
+    }
 }
 .boardText div{
     order:1
 }
 /* 글쓰기 */
 
+.writeFlex {
+    display: flex;
+    margin-bottom: 10px;
+}
+.writeLabel {
+    margin: auto 0;
+    font-weight: 700;
+    padding-left: 2%;
+    width: 4%;
+    float: right;
+}
+.writeDate {
+    width: 24%;
+    height: 50px;
+    border: 0;
+    border-radius: 30px;
+    text-shadow: 0 0 0 #000000;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Nanum Gothic";
+}
+
+.writeDate:focus {
+    outline: 0;
+    animation-name: TitleAni;
+    animation-duration:0.05s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
 .writeTitle {
-    width: 100%;
-    height: 30px;
+    width: 70%;
+    height: 50px;
+    border: 0;
+    border-radius: 30px;
+    padding-left: 10px;
+    text-shadow: 0 0 0 #000000;
+    font-size: 20px;
+}
+.writeTitle:focus {
+    outline: 0;
+    animation-name: TitleAni;
+    animation-duration:0.1s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
 }
 
 .writeWriter {
     height: 25px;
 }
 .writeInput {
+    font-family: "Nanum Gothic";
+    padding-left: 10px;
+    padding-top: 10px;
     height: 300px;
     width: 100%;
+    border: 0;
     margin-bottom: 10px;
+    border-radius: 10px;
+    resize: none;
 }
+
+.writeInput:focus {
+    outline: 0;
+}
+.writeInput:focus {
+    outline: 0;
+    animation-name: TitleAni;
+    animation-duration:0.05s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes TitleAni {
+    0% {
+        background-color: rgb(231, 238, 255);
+    }
+    100% {
+        
+        background-color: rgba(221, 227, 244, 0.533);
+        box-shadow: 0 0 2px;
+    }
+}
+
 /* post 화면 */
 .postWrap {
     background-color: white;
@@ -361,35 +400,7 @@ animation-fill-mode: forwards;
         background-color: rgb(106, 167, 224);
         color: white;
     }
-    0% {
-        background-color: rgb(106, 167, 224);
-        color: white;
-    }
   }
-
-.btn:active {
-
-cursor: pointer;
-animation-name: btnAni2;
-animation-duration:0.1s;
-animation-duration: leaner;
-animation-iteration-count:1;
-animation-direction:alternate;
-animation-fill-mode: forwards;
-}
-
-
-@keyframes btnAni2 {
-0% {
-    background-color: rgb(106, 167, 224);
-    color: white;
-}
-100% {
-    
-    background-color: rgb(106, 124, 224);
-    color: white;
-}
-}
 
 /* footer */
 
