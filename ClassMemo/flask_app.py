@@ -4,6 +4,7 @@ import pymysql
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime as dt
 
+#브랜치 분기
 
 app = Flask(__name__)
 app.secret_key = 'thisisthepassword'
