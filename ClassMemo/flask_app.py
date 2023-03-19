@@ -3,7 +3,7 @@ from flask_paginate import Pagination, get_page_args
 import pymysql
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime as dt
-
+# 브랜치 분기 : branch_nano
 
 app = Flask(__name__)
 app.secret_key = 'thisisthepassword'
