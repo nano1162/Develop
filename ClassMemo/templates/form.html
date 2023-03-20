@@ -4,12 +4,27 @@
 <article>
     <h2>글쓰기</h2>
     <form action="/board/wpost" name="writeForm" method="POST">
-        <div class="writeFlex">
-            <input type="text" name="title" class="writeTitle" placeholder="제목" required>
-            <label for="date" class="writeLabel">제출<br>기한</label>
-            <input type="date" name="date" class="writeDate" required>
+        <div class="writeWrap">
+            <div style="width: 70%;">
+                <input type="text" name="title" class="writeTitle" placeholder="제목" required>
+                <textarea name="context" class="writeInput" cols="30" rows="10"  placeholder="내용" required></textarea>
+            </div>
+            <div style="display:flex; flex-direction: column; width: 30%;  margin-left: 20px;" id="didiv">
+                <select name="tamOrJin" id="selectTam" class="selectStyle" required onchange="ChangeValue()"> 
+                    <option value="">분류 선택</option>
+                    <option value="공통">공통</option>
+                    <option value="탐구">탐구</option>
+                    <option value="진로">진로</option>
+                </select>
+                <select name="subject" id="selectSub" class="selectStyle" required>
+                    <option value="">과목 선택</option>
+                </select>
+                <input type="date" name="date_a" class="writeDate" required>
+                <input type="date" name="date_b" class="writeDate dateB">
+                <input type="date" name="date_c" class="writeDate dateC">
+                <input type="text" id="date_c_yes" name="date_c_yes" value="yes" style="display: none;">
+             </div>
         </div>
-        <textarea name="context" class="writeInput" cols="30" rows="10"  placeholder="내용" required></textarea>
         <div style="display:flex;justify-content: flex-end;">
             <button type="submit" class="btn writeBtn">쓰기</button>
         </div>

@@ -196,13 +196,63 @@ article h2{
     color: Red;
     font-weight: 700;
 }
-/* 수행평가 목록 table - 2*/
+/* 수행평가 목록 */
 
 .table {
     width: 100%;
     text-align: center;
 }
-
+.boardForm {
+    display: flex;
+    padding: 10px 0 10px 0;
+    border: 0;
+    border-radius: 30px;
+    background-color: rgb(221, 223, 240);
+    font-size: 20px;
+    text-align: center;
+    font-family: "Nanum Gothic";
+}
+.boardForm button{
+    border-radius: 20px;
+    border: 0;
+    background-color: white;
+}
+.boardForm button:hover {
+    cursor: pointer;
+    animation-name: newAni3;
+    animation-duration:0.15s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+.boardSelect select {
+    height: 30px;
+    margin-top: 5px;
+    border: 0;
+    border-radius: 30px;
+    padding: 0 5px 0 5px;
+    text-shadow: 0 0 0 #000000;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Nanum Gothic";
+}
+.boardSelect select:focus {
+    outline: 0;
+    animation-name: TitleAni;
+    animation-duration:0.1s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+.boardSelect {
+    margin: 0;
+    width: 13%;
+    margin-right: 0.5%;
+    margin-left: 0.5%;
+    
+}
 .boardTie {
     padding: 2% 1% 1% 1%;
     background-color: rgb(96, 163, 236);
@@ -211,6 +261,9 @@ article h2{
 .boardBackgr {
     background-color: rgb(255, 255, 255);
     width: 100%;
+}
+.boardB {
+    margin-bottom: 10px;
 }
 
 .boardText {
@@ -258,7 +311,7 @@ article h2{
 }
 /* 글쓰기 */
 
-.writeFlex {
+.writeWrap {
     display: flex;
     margin-bottom: 10px;
 }
@@ -266,11 +319,21 @@ article h2{
     margin: auto 0;
     font-weight: 700;
     padding-left: 2%;
-    width: 4%;
     float: right;
 }
+
+.selectStyle {
+    margin-bottom: 10px;
+    height: 50px;
+    border: 0;
+    border-radius: 30px;
+    text-shadow: 0 0 0 #000000;
+    font-size: 20px;
+    text-align: center;
+    font-family: "Nanum Gothic";
+}
 .writeDate {
-    width: 24%;
+    margin-bottom: 10px;
     height: 50px;
     border: 0;
     border-radius: 30px;
@@ -290,7 +353,8 @@ article h2{
     animation-fill-mode: forwards;
 }
 .writeTitle {
-    width: 70%;
+    width: 100%;
+    margin-bottom: 10px;
     height: 50px;
     border: 0;
     border-radius: 30px;

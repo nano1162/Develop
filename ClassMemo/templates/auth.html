@@ -18,6 +18,15 @@
             <span>권한 단계 : default</span>
             {% endif %}
         </div>
+        <div>
+            <span>현재 선택과목</span>
+            {% for i in range(2, 8)%}
+            <p>{{ data_list[i]}}</p>
+            {% endfor %}
+        </div>
+        <div>
+            <button class="btn" onclick="location.href='/auth/winfo'">정보 수정</button>
+        </div>
     </div>
 </article>
 {% endblock %}

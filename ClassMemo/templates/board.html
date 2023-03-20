@@ -3,12 +3,82 @@
 {% block content %}
 <article>
     <h2>수행평가</h2>
+    {% if not session %}
+    <form action="" class="boardForm">
+        <div class="boardSelect">
+            <label for="tam_a">탐구 A</label>
+            <br>
+            <select name="tam_a">
+                <option value="">선택</option>
+                <option value="물리학1" >물리학1</option>
+                <option value="화학1">화학1</option>
+                <option value="생명과학1">생명과학1</option>
+                <option value="지구과학1">지구과학1</option>
+            </select>
+        </div>
+        <div class="boardSelect">
+            <label for="tam_b">탐구 B</label>
+            <br>
+            <select name="tam_b">
+                <option value="">선택</option>
+                <option value="물리학1">물리학1</option>
+                <option value="화학1" >화학1</option>
+                <option value="생명과학1">생명과학1</option>
+                <option value="지구과학1">지구과학1</option>
+            </select>
+        </div>
+        <div class="boardSelect">
+            <label for="tam_c">탐구 C</label>
+            <br>
+            <select name="tam_c">
+                <option value="">선택</option>
+                <option value="물리학1">물리학1</option>
+                <option value="화학1">화학1</option>
+                <option value="생명과학1">생명과학1</option>
+                <option value="지구과학1">지구과학1</option>
+            </select>
+        </div>
+        <div class="boardSelect">
+            <label for="jin_a">진로 A</label>
+            <br>
+            <select name="jin_a">
+                <option value="">선택</option>
+                <option value="융합과학탐구">융합과학탐구</option>
+                <option value="생할과과학">생활과 과학</option>
+            </select>
+         </div>
+        <div class="boardSelect">
+            <label for="jin_b">진로 B</label>
+            <br>
+            <select name="jin_b">
+                <option value="">선택</option>
+                <option value="융합과학탐구">융합과학탐구</option>
+                <option value="생할과과학">생활과 과학</option>
+                <option value="과학사">과학사</option>
+            </select>
+        </div>
+        <div class="boardSelect">
+            <label for="lang">제2외국어</label>
+            <br>
+            <select name="lang">
+                <option value="">선택</option>
+                <option value="일본어">일본어</option>
+                <option value="중국어">중국어</option>
+            </select>
+        </div>
+        <button type="submit" style="width:10%;">선택</button>
+    </form>
+    <h3>로그인 할 시에는 모든 선택과목이 자동으로 선택됩니다.</h3>
+    {% else %}
+    <h3>선택과목 수정은 마이페이지에서 할 수 있습니다.</h3>
+    {% endif %}
+    
     <div>
         {% if data_list %}
         {% for i in data_list %}
-        <div class="boardBackgr">
+        <div class="boardBackgr boardB">
             <div class="boardText" onclick="location.href='/board/post/{{ i[0] }}'">
-                <span class="boardText1">{{ i[1] }} | {% if i[5] != '0' %}
+                <span class="boardText1">{{ i[6] }} <span style="font-weight: 700; color: rgb(78, 57, 196);">{{ i[7] }}</span> | {{ i[1] }}  | {% if i[5] != '0' %}
                     {% if i[5] > '0' %}
                     <span class="finishDate">기한 만료 </span>D+{{ i[5] }}
                     {% else %}
@@ -35,7 +105,6 @@
     </div>
     {% endif %}
     <div style="text-align: center;">
-    {{ pagination.links | safe }}
     </div>
 </article>
 
