@@ -22,7 +22,7 @@ if (tamValue == "진로") {
     element1.textContent = "융합과학탐구";
     selectSub.appendChild(element1);
 
-    element2.value = "생활과과학";
+    element2.value = "생활과 과학";
     element2.textContent = "생활과 과학";
     selectSub.appendChild(element2);
 
