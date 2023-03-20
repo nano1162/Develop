@@ -83,7 +83,36 @@ def register():
 
 @app.route('/auth')
 def auth():
-    return render_template("auth.html")
+    db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+    cur = db.cursor()
+
+    sql = f"select * from userinfo2 where id='{session['id']}'"
+    cur.execute(sql)
+
+    data_list = cur.fetchall()[0]
+    
+    return render_template("auth.html", data_list=data_list)
+
+@app.route('/auth/winfo', methods=["GET", "POST"])
+def wauth():
+    if request.method == "GET":
+        return render_template("winfo.html")
+    elif request.method == "POST":
+        db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
+        cur = db.cursor()
+
+        tam_a = request.form['tam_a']
+        tam_b = request.form['tam_b']
+        tam_c = request.form['tam_c']
+        jin_a = request.form['jin_a']
+        jin_b = request.form['jin_b']
+        lang = request.form['lang']
+
+        sql = f"update userinfo2 set tam_a = '{tam_a}', tam_b='{tam_b}', tam_c='{tam_c}', jin_a='{jin_a}', jin_b='{jin_b}', lang='{lang}' where id='{session['id']}'"
+        cur.execute(sql)
+        db.commit()
+
+        return redirect('/auth')
 
 @app.route('/logout')
 def logout():
@@ -92,20 +121,34 @@ def logout():
 
 # 수행평가 게시판
 @app.route('/board')
-def society():
+def board():
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor()
-
     try:
-        tam_a = request.args['tam_a']
-        tam_b = request.args['tam_b']
-        tam_c = request.args['tam_c']
-        jin_a = request.args['jin_a']
-        jin_b = request.args['jin_b']
-        lang = request.args['lang']
+        sql = f"select * from userinfo2 where id='{session['id']}'"
+        cur.execute(sql)
+
+        datali = cur.fetchall()
+        datali
+        tam_a = datali[0][2]
+        tam_b = datali[0][3]
+        tam_c = datali[0][4]
+        jin_a = datali[0][5]
+        jin_b = datali[0][6]
+        lang = datali[0][7]
+
         sql = f"SELECT * from society_table where (subject='{tam_a}' and selecter ='A')  or (subject = '{tam_b}' and selecter ='B') or  (subject='{tam_c}' and selecter ='C') or (subject = '{jin_a}' and selecter = 'A') or (subject='{jin_b}' and selecter ='B') or subject = '{lang}' or (selecter = '공통' and not subject ='일본어' and not subject = '중국어')order by _id desc" 
     except:
-        sql = f"SELECT * from society_table order by _id desc"
+        try:
+            tam_a = request.args['tam_a']
+            tam_b = request.args['tam_b']
+            tam_c = request.args['tam_c']
+            jin_a = request.args['jin_a']
+            jin_b = request.args['jin_b']
+            lang = request.args['lang']
+            sql = f"SELECT * from society_table where (subject='{tam_a}' and selecter ='A')  or (subject = '{tam_b}' and selecter ='B') or  (subject='{tam_c}' and selecter ='C') or (subject = '{jin_a}' and selecter = 'A') or (subject='{jin_b}' and selecter ='B') or subject = '{lang}' or (selecter = '공통' and not subject ='일본어' and not subject = '중국어')order by _id desc" 
+        except:
+            sql = f"SELECT * from society_table order by _id desc"
 
     cur.execute(sql)
 

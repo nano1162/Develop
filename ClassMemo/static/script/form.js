@@ -13,6 +13,8 @@ if (tamValue == "진로") {
     let element0 = document.createElement('option');
     let element1 = document.createElement('option');
     let element2 = document.createElement('option');
+    let element3 = document.createElement('option');
+
     element0.textContent = "과목 선택"
     selectSub.appendChild(element0);
 
@@ -23,6 +25,10 @@ if (tamValue == "진로") {
     element2.value = "생활과과학";
     element2.textContent = "생활과 과학";
     selectSub.appendChild(element2);
+
+    element3.value = "과학사";
+    element3.textContent = "과학사";
+    selectSub.appendChild(element3);
     if (didiv.childElementCount == 4) {
         let a = document.createElement('input');
         a.type = "date";

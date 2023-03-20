@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h2>정보 수정</h2>
+    <form action="" method="post">
+        <label for="tam_a">탐구 A</label>
+        <select name="tam_a">
+            <option value="">선택</option>
+            <option value="물리학1" >물리학1</option>
+            <option value="화학1">화학1</option>
+            <option value="생명과학1">생명과학1</option>
+            <option value="지구과학1">지구과학1</option>
+        </select>
+        <label for="tam_b">탐구 B</label>
+        <select name="tam_b">
+            <option value="">선택</option>
+            <option value="물리학1">물리학1</option>
+            <option value="화학1" >화학1</option>
+            <option value="생명과학1">생명과학1</option>
+            <option value="지구과학1">지구과학1</option>
+        </select>
+        <label for="tam_c">탐구 C</label>
+        <select name="tam_c">
+            <option value="">선택</option>
+            <option value="물리학1">물리학1</option>
+            <option value="화학1">화학1</option>
+            <option value="생명과학1">생명과학1</option>
+            <option value="지구과학1">지구과학1</option>
+        </select>
+        <label for="jin_a">진로 A</label>
+        <select name="jin_a">
+            <option value="">선택</option>
+            <option value="융합과학탐구">융합과학탐구</option>
+            <option value="생할과과학">생활과 과학</option>
+            <option value="과학사">과학사</option>
+        </select>
+        <label for="jin_b">진로 B</label>
+        <select name="jin_b">
+            <option value="">선택</option>
+            <option value="융합과학탐구">융합과학탐구</option>
+            <option value="생할과과학">생활과 과학</option>
+        </select>
+        <label for="lang">제2외국어</label>
+        <select name="lang">
+            <option value="">선택</option>
+            <option value="일본어">일본어</option>
+            <option value="중국어">중국어</option>
+        </select>
+        <button type="submit" class="btn">선택</button>
+    </form>
+</article>
+{% endblock %}
