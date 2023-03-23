@@ -167,6 +167,7 @@ article h2{
 
 .indexMain {
     display: flex;
+    margin-bottom: 40px;
 }
 
 .indexLeft {
@@ -188,20 +189,29 @@ article h2{
     background-color: rgba(255, 255, 255, 0);
 }
 
+.indexBottomWrap {
+    margin-top: 40px;
+}
 .indexBottom {
-    padding-top: 20px;
+    padding-bottom: 10px;
     display: flex;
     vertical-align: middle;
 }
-
+.c1 {
+    background:linear-gradient(to left top, rgb(244, 105, 63), rgb(253, 46, 115));
+}
+.c2 {
+    background:linear-gradient(to left top, rgb(55, 191, 201), rgb(92, 206, 108));
+}
 .upLogLeft {
     border: 0;
-    background:linear-gradient(to left top, rgb(244, 105, 63), rgb(253, 46, 115));
     width: 25%;
     text-align: center;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    color:white
+    color:white;
+    padding: 0 1% 0 1%;
+    word-break:keep-all;
 }
 
 .upLogRight{
@@ -222,10 +232,6 @@ article h2{
 }
 /* 수행평가 목록 */
 
-.table {
-    width: 100%;
-    text-align: center;
-}
 .boardForm {
     display: flex;
     padding: 10px 0 10px 0;
@@ -283,11 +289,21 @@ article h2{
     border-radius: 10px; 
 }
 .boardBackgr {
-    background-color: rgb(255, 255, 255);
     width: 100%;
+    background-color: rgb(255, 255, 255);
 }
 .boardB {
     margin-bottom: 10px;
+    display: flex;
+}
+
+.ckBox {
+    width: 10%;
+}
+
+.ckBox input{
+    height: 100%;
+    width: 100%;
 }
 
 .boardText {
@@ -295,8 +311,11 @@ article h2{
     flex-direction:column; 
     margin-left: 10px; 
     padding-top: 5px; 
+    padding-left: 1%;
     padding-bottom: 5px; 
     margin-right:10px; 
+    width: 89%;
+    background-color: rgb(255, 255, 255);
 }
 .boardText1 {
     order:0; 

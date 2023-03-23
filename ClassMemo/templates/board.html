@@ -76,7 +76,7 @@
     <div>
         {% if data_list %}
         {% for i in data_list %}
-        <div class="boardBackgr boardB">
+        <div class="boardB">
             <div class="boardText" onclick="location.href='/board/post/{{ i[0] }}'">
                 <span class="boardText1">{{ i[6] }} <span style="font-weight: 700; color: rgb(78, 57, 196);">{{ i[7] }}</span> | {{ i[1] }}  | {% if i[5] != '0' %}
                     {% if i[5] > '0' %}
@@ -86,12 +86,14 @@
                     {% endif %}
                     {% else %}
                     <span class="finishDate">마감일!</span>
-                    {% endif %}</span></span>
-                <div>
+                    {% endif %}
+                <div style="font-size: 16px;">
                     <span>작성자 : {{ i[2] }}</span>
                     <span>게시 : {{ i[4] }}</span>
-                    
                 </div>
+            </div>
+            <div class="ckBox">
+                <input type="checkbox" name="">
             </div>
         </div>
         {% endfor %}
