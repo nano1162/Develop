@@ -11,7 +11,7 @@ app.secret_key = 'thisisthepassword'
 @app.route('/')
 def index():
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
-    cur = db.cursor()
+    cur = db.cursor() 
 
     sql = "SELECT * from society_table where selecter = '공통' order by _id desc "
     cur.execute(sql)
@@ -124,19 +124,22 @@ def board():
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor()
     try:
-        sql = f"select * from userinfo2 where id='{session['id']}'"
-        cur.execute(sql)
+        if session['id'] == 'admin':
+            sql = "SELECT * from society_table"
+        else:
+            sql = f"select * from userinfo2 where id='{session['id']}'"
+            cur.execute(sql)
 
-        datali = cur.fetchall()
-        datali
-        tam_a = datali[0][2]
-        tam_b = datali[0][3]
-        tam_c = datali[0][4]
-        jin_a = datali[0][5]
-        jin_b = datali[0][6]
-        lang = datali[0][7]
+            datali = cur.fetchall()
+            datali
+            tam_a = datali[0][2]
+            tam_b = datali[0][3]
+            tam_c = datali[0][4]
+            jin_a = datali[0][5]
+            jin_b = datali[0][6]
+            lang = datali[0][7]
 
-        sql = f"SELECT * from society_table where (subject='{tam_a}' and selecter ='A')  or (subject = '{tam_b}' and selecter ='B') or  (subject='{tam_c}' and selecter ='C') or (subject = '{jin_a}' and selecter = 'A') or (subject='{jin_b}' and selecter ='B') or subject = '{lang}' or (selecter = '공통' and not subject ='일본어' and not subject = '중국어')order by _id desc" 
+            sql = f"SELECT * from society_table where (subject='{tam_a}' and selecter ='A')  or (subject = '{tam_b}' and selecter ='B') or  (subject='{tam_c}' and selecter ='C') or (subject = '{jin_a}' and selecter = 'A') or (subject='{jin_b}' and selecter ='B') or subject = '{lang}' or (selecter = '공통' and not subject ='일본어' and not subject = '중국어')order by _id desc" 
     except:
         try:
             tam_a = request.args['tam_a']

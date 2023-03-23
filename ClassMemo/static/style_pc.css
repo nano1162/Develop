@@ -187,6 +187,30 @@ article h2{
 .boardWrap {
     background-color: rgba(255, 255, 255, 0);
 }
+
+.indexBottom {
+    padding-top: 20px;
+    display: flex;
+    vertical-align: middle;
+}
+
+.upLogLeft {
+    border: 0;
+    background:linear-gradient(to left top, rgb(244, 105, 63), rgb(253, 46, 115));
+    width: 25%;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    color:white
+}
+
+.upLogRight{
+    border: 0;
+    background-color: rgb(255, 255, 255);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 10px 10px 1%;
+}
 /* 마감일! */
 .endDate {
     color: green;
