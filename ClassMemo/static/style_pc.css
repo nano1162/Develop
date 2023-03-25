@@ -170,10 +170,12 @@ article h2{
     margin-bottom: 40px;
 }
 
+/* 메인 화면 왼쪽, 공통 정보란*/
 .indexLeft {
     width: 60%;
 }
 
+/* 메인 화면 오른쪽, 수행평가(공통) */
 .indexRight{
     width: 38%;
     padding: 0;
@@ -185,33 +187,57 @@ article h2{
     color: white;
     font-weight: 800;
 }
+
+.boardTextIndex {
+    display:flex;
+    flex-direction:column; 
+    margin-left: 10px; 
+    padding-top: 5px; 
+    padding-left: 1%;
+    padding-bottom: 5px; 
+    margin-right:10px; 
+    width: 89%;
+}
+
+/* 수행평가 표시되는 단 묶기 */
 .boardWrap {
     background-color: rgba(255, 255, 255, 0);
 }
 
+/* 메인화면 하단 업데이트 로그*/ 
 .indexBottomWrap {
     margin-top: 40px;
 }
+
+/* 업데이트 로고 개별 클래스 */
 .indexBottom {
     padding-bottom: 10px;
     display: flex;
     vertical-align: middle;
 }
-.c1 {
-    background:linear-gradient(to left top, rgb(244, 105, 63), rgb(253, 46, 115));
-}
-.c2 {
-    background:linear-gradient(to left top, rgb(55, 191, 201), rgb(92, 206, 108));
-}
-.upLogLeft {
+
+
+.indexBottom:nth-child(odd) .upLogLeft {
     border: 0;
-    width: 25%;
+    width: 15%;
     text-align: center;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
     color:white;
     padding: 0 1% 0 1%;
     word-break:keep-all;
+    background:linear-gradient(to left top, rgb(55, 191, 201), rgb(92, 206, 108));
+}
+.indexBottom:nth-child(even) .upLogLeft {
+    border: 0;
+    width: 15%;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    color:white;
+    padding: 0 1% 0 1%;
+    word-break:keep-all;
+    background:linear-gradient(to left top, rgb(244, 105, 63), rgb(253, 46, 115));
 }
 
 .upLogRight{
@@ -220,6 +246,7 @@ article h2{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 10px 10px 10px 1%;
+    width: 85%;
 }
 /* 마감일! */
 .endDate {
@@ -230,6 +257,7 @@ article h2{
     color: Red;
     font-weight: 700;
 }
+
 /* 수행평가 목록 */
 
 .boardForm {
@@ -245,6 +273,7 @@ article h2{
 .boardForm button{
     border-radius: 20px;
     border: 0;
+    width:10%;
     background-color: white;
 }
 .boardForm button:hover {
@@ -321,7 +350,15 @@ article h2{
     order:0; 
     font-size: 25px;
 }
-
+.boardText:hover {
+    cursor: pointer;
+    animation-name: boardAni;
+    animation-duration:0.1s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
 .boardBackgr:hover {
     cursor: pointer;
     animation-name: boardAni;

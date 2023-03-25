@@ -187,6 +187,16 @@ article img {
 .indexLeft {
     width: 100%
 }
+.boardBackgr {
+    display:flex;
+    flex-direction:column; 
+    padding-top: 5px; 
+    padding-left: 2%;
+    padding-bottom: 5px; 
+    margin-right:10px; 
+    width: 89%;
+    background-color: white;
+}
 
 /* 모바일에서는 메인 화면 이미지 숨김.*/
 .indexLeft img{
@@ -198,31 +208,77 @@ article img {
 }
 /* 수행평가 목록 table - 2*/
 
-.table {
-    width: 100%;
+.boardForm button{
+    border-radius: 20px;
+    border: 0;
+    margin-top: 20px;
+    width: 39%;
+    height: 30px;
+    background-color: white;
+}
+.boardForm button:hover {
+    cursor: pointer;
+    animation-name: newAni3;
+    animation-duration:0.15s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+.boardSelect select {
+    height: 30px;
+    margin-top: 5px;
+    border: 0;
+    border-radius: 30px;
+    padding: 0 5px 0 5px;
+    text-shadow: 0 0 0 #000000;
+    font-size: 20px;
     text-align: center;
+    font-family: "Nanum Gothic";
+}
+.boardSelect select:focus {
+    outline: 0;
+    animation-name: TitleAni;
+    animation-duration:0.1s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
 }
 
 .boardBackgr {
-    background-color: rgb(255, 255, 255);
+    
     width: 100%;
     border-radius: 20px; 
     margin-bottom: 10px;
 }
 
+.boardB {
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 2%;
+}
+
 .boardText {
     display:flex;
     flex-direction:column; 
-    margin-left: 10px; 
+    padding-left: 10px; 
     padding-top: 5px; 
     padding-bottom: 5px; 
-    margin-right:10px; 
+    padding-right:10px; 
 }
 .boardText1 {
     order:0; 
     font-size: 25px;
 }
-
+.boardText:hover {
+    cursor: pointer;
+    animation-name: boardAni;
+    animation-duration:0.1s;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
 .boardBackgr:hover {
     cursor: pointer;
     animation-name: boardAni;
@@ -231,6 +287,14 @@ article img {
     animation-iteration-count:1;
     animation-direction:alternate;
     animation-fill-mode: forwards;
+}
+.endDate {
+    color: green;
+    font-weight: 700;
+}
+.finishDate {
+    color: Red;
+    font-weight: 700;
 }
 @keyframes boardAni {
     0% {
@@ -244,6 +308,11 @@ article img {
 .boardText div{
     order:1
 }
+
+.ckBox input{
+    display: none;
+}
+
 /* 글쓰기 */
 
 .writeTitle {

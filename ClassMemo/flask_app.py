@@ -13,12 +13,16 @@ def index():
     db = pymysql.connect(host="localhost", user="root", passwd="0000", db="societydb", charset="utf8")
     cur = db.cursor() 
 
+    sql = "SELECT * from update_log order by _id desc"
+    cur.execute(sql)
+    uplog = cur.fetchall()
+
     sql = "SELECT * from society_table where selecter = '공통' order by _id desc "
     cur.execute(sql)
 
     data_list = cur.fetchall()
         
-    return render_template("index.html", data_list=data_list)
+    return render_template("index.html", data_list=data_list, uplog=uplog)
 
 #로그인 관련 기능
 @app.route('/login', methods=["GET", "POST"])
