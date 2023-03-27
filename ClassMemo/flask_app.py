@@ -297,7 +297,7 @@ def updatepost(post_id):
             if (session['id'] == 'admin'):
                 title = request.form['title']
                 context = request.form['context']
-                date = datawrap[4]
+                date = dt.datetime.now().strftime("%Y-%m-%d")
                 date_d = request.form['date']
 
                 sql = f"UPDATE society_table SET title ='{title}', context = '{context}', date_d=datediff('{date}', '{date_d}') WHERE _id={post_id}"
@@ -314,7 +314,7 @@ def updatepost(post_id):
         else:
             title = request.form['title']
             context = request.form['context']
-            date = datawrap[4]
+            date = dt.datetime.now().strftime("%Y-%m-%d")
             date_d = request.form['date']
 
             sql = f"UPDATE society_table SET title ='{title}', context = '{context}', date_d=datediff('{date}', '{date_d}') WHERE _id={post_id}"

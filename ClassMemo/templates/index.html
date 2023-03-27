@@ -38,19 +38,15 @@
     <hr>
     <div class="indexBottomWrap">
         <h2>업데이트 로그</h2>
-        {% set j = 0 %}
-        <!-- 오류 난 부분, 수정해야 함 오류 보고 at 230326 12:44 AM -->
         {% for i in uplog %}
         <div class="indexBottom" >
             <div class="upLogLeft">
-                <h2>{{ uplog[j][1] }}</h2>
+                <h2>{{ i[1] }}</h2>
             </div>
             <div class="upLogRight">
-                <span>{{ uplog[j][2] }}</span>
+                <span>{{ i[2] }}</span>
             </div>
         </div>
-        {% set j = j + 1 %}
         {% endfor %}
-    </div>
 </article>
 {% endblock %}

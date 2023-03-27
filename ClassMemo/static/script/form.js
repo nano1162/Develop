@@ -125,10 +125,15 @@ else if (tamValue == "공통") {
     let element5 = document.createElement('option');
     let element6 = document.createElement('option');
     let element7 = document.createElement('option');
+    let element8 = document.createElement('option');
     
     element0.textContent = "과목 선택"
     selectSub.appendChild(element0);
 
+    element8.value = "일반";
+    element8.textContent = "일반";
+    selectSub.appendChild(element8);
+    
     element1.value = "수학1";
     element1.textContent = "수학1";
     selectSub.appendChild(element1);
@@ -156,6 +161,8 @@ else if (tamValue == "공통") {
     element7.value = "중국어";
     element7.textContent = "중국어";
     selectSub.appendChild(element7);
+
+    
     dateB.remove()
     try{
         dateC.remove()
