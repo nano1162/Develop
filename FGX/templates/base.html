@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontGnadeX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_pc.css') }}" media="screen and (min-width: 768px)">
+</head>
+<body>
+    <header>
+        <div class="hstyle">
+            <h1>고오급 유머 저장소</h1>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <div class="navbar-content">회원 등록 하기</div>
+            <div class="vl"></div>
+            <div class="navbar-content">회원 등록 하기</div>
+            <div class="vl"></div>
+            <div class="navbar-content">회원 등록 하기</div>
+        </div>
+        <hr>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
